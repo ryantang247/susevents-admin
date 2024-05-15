@@ -20,7 +20,10 @@
     "buffer": "^6.0.3",
     "element-plus": "^2.5.6",
     "nuxt": "^3.11.2",
+    "react-chat-engine": "^1.11.28",
+    "react-chat-engine-pretty": "^0.1.8",
     "seatsio": "^81.9.0",
+    "veaury": "^2.3.18",
     "vite-plugin-vuetify": "^2.0.3",
     "vue": "^3.4.19",
     "vue-cookies": "^1.8.3"
