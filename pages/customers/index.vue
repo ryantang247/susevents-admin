@@ -6,9 +6,6 @@
     </v-col>
     <v-col>
       <PrettyChatWindow
-          :projectId="projectId"
-          username="admin"
-          secret="admin"
       />
     </v-col>
   </v-row>
