@@ -2,7 +2,7 @@
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import { Buffer } from 'buffer'
 export default defineNuxtConfig({
-  ssr: true,
+  ssr: false,
   runtimeConfig:{
     public:{
       workspaceKey: process.env.workspaceKey
