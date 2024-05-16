@@ -5,8 +5,8 @@
       <MenuList/>
     </v-col>
     <v-col>
-      <PrettyChatWindow
-      />
+<!--      <PrettyChatWindow-->
+<!--      />-->
     </v-col>
   </v-row>
 </template>
