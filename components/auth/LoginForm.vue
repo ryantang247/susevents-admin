@@ -62,11 +62,6 @@ export default {
         const response = await axios.post('https://secourse2024-675d60a0d98b.herokuapp.com/api/login', {
           sid: this.sid,
           password: this.password
-        }, {
-          headers: {
-            "Access-Control-Allow-Methods": "POST", // Specify allowed methods
-            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept" // Specify allowed headers
-          },
         });
 
 
