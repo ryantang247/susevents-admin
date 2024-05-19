@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     }
   },
   build: {
-    transpile: ['vuetify'],
+    transpile: ['vuetify','veaury'],
   },
 
   modules: [
@@ -30,6 +30,5 @@ export default defineNuxtConfig({
 
   },
   elementPlus: { /** Options */ },
-  vuetify: { /** Options */ },
   devtools: { enabled: false }
 })

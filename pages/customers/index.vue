@@ -5,11 +5,13 @@
       <MenuList/>
     </v-col>
     <v-col>
+      <ClientOnly>
       <PrettyChatWindow
           :projectId="projectId"
           username="admin"
           secret="admin"
       />
+      </ClientOnly>
     </v-col>
   </v-row>
 </template>
@@ -19,7 +21,7 @@ import MenuList from "~/components/dashboard/MenuList.vue";
 import Header from "~/components/dashboard/Header.vue";
 import VenueCards from "~/components/dashboard/venueCards.vue";
 import { PrettyChatWindow } from "react-chat-engine-pretty";
-import { applyReactInVue } from 'veaury';
+import { applyReactInVue } from 'veaury'
 import userconfig from '@/userconfig.json';
 
 export default {
