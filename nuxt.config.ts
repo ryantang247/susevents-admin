@@ -11,6 +11,9 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify','veaury'],
   },
+  alias: {
+    'veaury': 'veaury/dist/veaury.esm.js'
+  },
 
   modules: [
     '@element-plus/nuxt',
@@ -27,6 +30,11 @@ export default defineNuxtConfig({
         transformAssetUrls,
       },
     },
+    build: {
+      commonjsOptions: {
+        transformMixedEsModules: true,
+      },
+    }
 
   },
   elementPlus: { /** Options */ },

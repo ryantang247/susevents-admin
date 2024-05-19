@@ -28,6 +28,7 @@
     "veaury": "^2.3.18",
     "vite-plugin-vuetify": "^2.0.3",
     "vue": "^3.4.19",
+    "vue-advanced-chat": "^2.1.0",
     "vue-cookies": "^1.8.3"
   },
   "devDependencies": {
