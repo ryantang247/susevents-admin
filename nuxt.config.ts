@@ -1,19 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
-// import veauryVitePlugins from 'veaury/vite/index.js'
-
-// const veaury = veauryVitePlugins({
-//   type: 'vue',
-// });
+import { Buffer } from 'buffer'
 export default defineNuxtConfig({
-
+  ssr: false,
   runtimeConfig:{
     public:{
       workspaceKey: process.env.workspaceKey
     }
   },
   build: {
-    transpile: ['vuetify','veaury'],
+    transpile: ['vuetify'],
   },
 
   modules: [
@@ -22,7 +18,6 @@ export default defineNuxtConfig({
       nuxt.hooks.hook('vite:extendConfig', (config) => {
         // @ts-expect-error
         config.plugins.push(vuetify({ autoImport: true }))
-
       })
     },
   ],
@@ -35,5 +30,6 @@ export default defineNuxtConfig({
 
   },
   elementPlus: { /** Options */ },
+  vuetify: { /** Options */ },
   devtools: { enabled: false }
 })
