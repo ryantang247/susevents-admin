@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@element-plus/nuxt": "^1.0.7",
+    "playwright": "^1.44.0",
     "sass": "^1.71.1",
     "vue-cli-plugin-vuetify-admin": "~0.5.7"
   },
