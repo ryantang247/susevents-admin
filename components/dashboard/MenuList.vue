@@ -150,7 +150,6 @@ export default {
       { text: 'Events', icon: 'mdi-ticket',link: '/events' },
       { text: 'Notification', icon: 'mdi-speaker' ,link: '/notification'},
       { text: 'Customer Services', icon: 'mdi-phone-classic' ,link: '/customers'},
-      { text: 'Notification', icon: 'mdi-speaker' ,link: '/notification'},
       { text: 'Transaction History', icon: 'mdi-cash-multiple',link: '/transaction' },
     ]
 
