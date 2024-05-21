@@ -170,6 +170,11 @@ export default {
           console.log(base64String);
         };
         reader.onerror = error => {
+          ElNotification.error({
+            title: 'Error',
+            message: `Error reading file. ${error.message}`,
+            offset: 100,
+          });c
           console.error('Error reading file:', error);
         };
       }
@@ -189,9 +194,19 @@ export default {
             }
         )
             .then(response => {
+              ElNotification.success({
+                title: 'Success',
+                message: `Success in updating users.`,
+                offset: 100,
+              });
               console.log("User updated successfully");
             })
             .catch(error => {
+              ElNotification.error({
+                title: 'Error',
+                message: `Error updating users. ${error.message}`,
+                offset: 100,
+              });
               console.log("Error updating user:", error);
             });
       } else {
@@ -210,7 +225,7 @@ export default {
 
           sid: this.sid,
           name: this.name,
-          avatar: this.image.toString('base64'),
+          avatar: this.image ? this.image.toString('base64') : null,
           password: this.password,
           status: this.isAdmin,
           email: this.email,
