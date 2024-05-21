@@ -74,7 +74,9 @@ export default {
     deleteItem(item){
       console.log("Deleting ", item.id)
 
-      axios.delete(`https://secourse2024-675d60a0d98b.herokuapp.com/api/deleteUser/${item.id}`)
+      axios.delete(`https://secourse2024-675d60a0d98b.herokuapp.com/api/deleteUser/${item.id}`,{
+        withCredentials:true
+      })
           .then(response => {
             console.log("User deleted successfully")
           })

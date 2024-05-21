@@ -103,7 +103,9 @@ export default {
         if (confirm("Are you sure you want to delete this item?")) {
           // User confirmed, proceed with deletion
           axios
-              .delete(`https://secourse2024-675d60a0d98b.herokuapp.com/api/deleteVenue/${item.id}`)
+              .delete(`https://secourse2024-675d60a0d98b.herokuapp.com/api/deleteVenue/${item.id}`,{
+                withCredentials:true
+              })
               .then((response) => {
                 console.log("Venue deleted successfully ",response);
                 this.venueList = this.venueList.filter((venue) => venue.id !== item.id);

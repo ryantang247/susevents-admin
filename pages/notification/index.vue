@@ -99,7 +99,9 @@ export default {
     submitNotification(){
       this.isWaiting = true
       this.canSubmit = false
-      axios.post(`https://secourse2024-675d60a0d98b.herokuapp.com/api/postNotification`, this.formdata
+      axios.post(`https://secourse2024-675d60a0d98b.herokuapp.com/api/postNotification`, this.formdata,{
+            withCredentials:true
+          }
       )
           .then(response => {
             console.log("Notifcation created successfully");

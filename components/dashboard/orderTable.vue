@@ -65,6 +65,8 @@ export default {
       axios.post('https://secourse2024-675d60a0d98b.herokuapp.com/api/refundTransaction', {
         orderId: item.id,
         price: Number(item.amount)
+      },{
+        withCredentials:true
       })
           .then((response) => {
             console.log(response);
@@ -82,7 +84,9 @@ export default {
     }
   },
   mounted(){
-    axios.get('https://secourse2024-675d60a0d98b.herokuapp.com/api/getAllTransaction')
+    axios.get('https://secourse2024-675d60a0d98b.herokuapp.com/api/getAllTransaction',{
+      withCredentials:true
+    })
         .then(response => {
           console.log("Transaction fetch successfully")
           // console.log(response.data)

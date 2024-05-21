@@ -173,7 +173,9 @@ export default {
               status: this.isAdmin,
               email: this.email,
               avatar: this.image
-            },
+            },{
+              withCredentials:true
+            }
         )
             .then(response => {
               console.log("User updated successfully");
@@ -202,7 +204,9 @@ export default {
           status: this.isAdmin,
           email: this.email,
 
-        }
+        },{
+              withCredentials:true
+            }
         )
             .then(response => {
               console.log("User created successfully");

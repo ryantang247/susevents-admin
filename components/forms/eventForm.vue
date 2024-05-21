@@ -232,7 +232,9 @@ export default {
         this.formdata.price = JSON.stringify(this.pricing);
         this.formdata.registrationDate = new Date().toLocaleDateString();
 
-        axios.post(`https://secourse2024-675d60a0d98b.herokuapp.com/api/createEvent`, this.formdata
+        axios.post(`https://secourse2024-675d60a0d98b.herokuapp.com/api/createEvent`, this.formdata,{
+              withCredentials:true
+            }
         )
             .then(response => {
               console.log("Event created successfully");
@@ -245,7 +247,9 @@ export default {
               console.log("Error creating event:", error);
             });
       }else {
-        axios.patch(`https://secourse2024-675d60a0d98b.herokuapp.com/api/updateEvent/${this.selectedEvent}`, this.formdata
+        axios.patch(`https://secourse2024-675d60a0d98b.herokuapp.com/api/updateEvent/${this.selectedEvent}`, this.formdata,{
+              withCredentials:true
+            }
         )
             .then(response => {
               console.log("Event updated successfully");

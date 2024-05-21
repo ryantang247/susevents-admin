@@ -62,7 +62,10 @@ export default {
         const response = await axios.post('https://secourse2024-675d60a0d98b.herokuapp.com/api/login', {
           sid: this.sid,
           password: this.password
-        });
+        }, {
+          withCredentials:true
+            }
+        );
 
 
         console.log("User login successfully");
