@@ -46,6 +46,12 @@
           required
 
       ></v-text-field>
+      <v-text-field
+          v-model="this.formdata.videolink"
+          label="Live streaming link"
+          required
+
+      ></v-text-field>
       <el-select
           v-model="formdata.category"
           placeholder="Select category"
@@ -110,16 +116,17 @@ export default {
   data(){
     return{
       formdata:{
-        title: '',
-        contactName: '',
-        description:'',
-        venueId:'',
-        contact:'',
+        title: null,
+        contactName: null,
+        description: null,
+        venueId: null,
+        contact: null,
         thumbnail: null,
         seatsioChartKey: null,
         seatsioEventsKey: null,
-        startDate:'',
-        endDate: '',
+        startDate: null,
+        endDate: null,
+        videolink: null,
         registrationDate: null,
         price: null,
         category: null,

@@ -94,7 +94,7 @@ import {SeatsioDesigner} from "@seatsio/seatsio-vue";
 
 export default {
   name: 'SeatsIoDrawer',
-  emits:['can-submit', 'pricing', 'seatio-eventkey',  'seatio-chartkey,capacity'],
+  emits:['can-submit', 'pricing', 'seatio-eventkey',  'seatio-chartkey','capacity'],
   components: {SeatsioDesigner},
   data() {
     return {
@@ -138,6 +138,7 @@ export default {
         this.isSeated = !this.isSeated
         this.dialogOpen = true
         this.pricing = []
+        this.$emit('seatio-eventkey', null)
 
       }
     },
@@ -217,6 +218,8 @@ export default {
 
 
       } else {
+        this.$emit('can-submit', true)
+
         console.log('Chart not complete!');
       }
     },

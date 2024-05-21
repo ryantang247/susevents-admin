@@ -23,13 +23,6 @@ import UserForm from "~/components/forms/userForm.vue";
 import {SeatsioDesigner, SeatsioEventManager, SeatsioSeatingChart} from '@seatsio/seatsio-vue';
 import EventForm from "~/components/forms/eventForm.vue";
 
-const username = '5f4908aa-ff2b-42c5-ad29-62a8d60b8207';
-
-// Website provided automatic base64 encoding
-// const authString = btoa(username+':')
-
-const sampleEvent = '4bf8d9e1-3724-44b8-9a35-6578224d1539'
-
 export default {
 
   components: {SeatsioSeatingChart ,SeatsioEventManager, EventForm, SeatsioDesigner, UserForm, VenueForm, Header, MenuList},
