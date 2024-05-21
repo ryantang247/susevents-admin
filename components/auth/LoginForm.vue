@@ -8,6 +8,7 @@
 <template>
   <v-row class="justify-center">
     <v-col cols="12" sm="8" md="6">
+      <img style="align-items: center; display: flex;margin: auto; width: 300px;" src="~/assets/logo2.png" alt="Logo"/>
       <v-card class="elevation-12">
         <v-card-text>
           <v-row>
@@ -30,7 +31,7 @@
               </div>
             </v-col>
             <v-col cols="12" class="pt-0">
-              <v-btn @click="login" color="primary" size="large" block flat>Sign in</v-btn>
+              <v-btn @click="login" color="orange" size="large" block flat>Sign in</v-btn>
             </v-col>
           </v-row>
         </v-card-text>
