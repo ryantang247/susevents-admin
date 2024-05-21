@@ -19,9 +19,14 @@
 
       <v-text-field
           v-model="this.password"
+          :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+          :rules="[rules.required, rules.min]"
+          :type="show1 ? 'text' : 'password'"
+          hint="At least 8 characters"
           label="Password"
-          required
-
+          name="input-10-1"
+          counter
+          @click:append="show1 = !show1"
       ></v-text-field>
       <v-text-field
           v-model="this.email"
@@ -116,7 +121,13 @@ export default {
       image: null,
       password:'',
       isAdmin: null,
-      email: ''
+      email: '',
+      show1: '',
+      rules: {
+        required: value => !!value || 'Required.',
+        min: v => v.length >= 8 || 'Min 8 characters',
+
+      },
     }
   },
   mounted() {
