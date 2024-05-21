@@ -177,7 +177,7 @@ export default {
     submitForm(){
 
       if (this.isEdit) {
-        axios.patch(`http://localhost:3453/api/updateUser/${this.editUser.id}`, {
+        axios.patch(`https://secourse2024-675d60a0d98b.herokuapp.com/api/updateUser/${this.editUser.id}`, {
               sid: this.sid,
               name: this.name,
               password: this.password,
@@ -205,7 +205,7 @@ export default {
               avatar: this.image
             }
         )
-        axios.post(`http://localhost:3453/api/createUser`, {
+        axios.post(`https://secourse2024-675d60a0d98b.herokuapp.com/api/createUser`, {
 
 
           sid: this.sid,
