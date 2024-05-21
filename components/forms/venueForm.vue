@@ -60,8 +60,7 @@ export default {
     // If in edit mode and editUser is provided, autofill the form
     if (this.isEdit) {
       try{
-      // const imageBlob = await this.fetchImage(this.venueData.thumbnail);
-      // console.log('data:image/png;base64,'+imageBlob)
+
       this.name = this.venueData.name || '';
       this.description = this.venueData.description || '';
       this.image = this.venueData.thumbnail || '';
@@ -74,20 +73,6 @@ export default {
     }
   },
   methods:{
-    // fetchImage(url) {
-    //   return axios
-    //       .get(url, {
-    //         responseType: 'arraybuffer'
-    //       })
-    //       .then(response => {
-    //
-    //         return Buffer.from(response.data, 'binary').toString('base64');
-    //       })
-    //       .catch(error => {
-    //         console.error('Error fetching image:', error);
-    //         throw error; // Rethrow the error to handle it in the caller if necessary
-    //       });
-    // },
     handleCoordinates({ lng, lat }){
       this.xcoord = lng
       this.ycoord = lat
@@ -104,6 +89,11 @@ export default {
           // console.log('Uploaded image', base64String); // This is the Base64-encoded image data
         };
         reader.onerror = error => {
+          ElNotification.error({
+            title: 'Error parsing image',
+            message: "There is problem in image parsing!",
+            offset: 100,
+          })
           console.error('Error reading file:', error);
         };
       }
@@ -124,9 +114,19 @@ export default {
             .then(response => {
               console.log("Venue created successfully")
               console.log(response)
+              ElNotification.success({
+                title: 'Success',
+                message: "Venue created successfully!",
+                offset: 100,
+              })
               navigateTo('/venue')
             },)
             .catch(error => {
+              ElNotification.error({
+                title: 'Error',
+                message: "Error creating events: " + error,
+                offset: 100,
+              })
               console.log("Error creating venue")
 
             });

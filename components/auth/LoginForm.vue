@@ -82,7 +82,12 @@ export default {
         // Redirect to another page only after cookie is set
         this.$router.push('/user');
       } catch (error) {
-        console.log("Error login");
+        ElNotification.error({
+          title: 'Error',
+          message: `Error logging in. ${error.message}`,
+          offset: 100,
+        });
+
       }
     }
   }

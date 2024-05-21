@@ -78,9 +78,19 @@ export default {
         withCredentials:true
       })
           .then(response => {
-            console.log("User deleted successfully")
+            ElNotification.success({
+              title: 'Success!',
+              message: `User successfully deleted!`,
+              offset: 100,
+            });
+
           })
           .catch(error => {
+            ElNotification.error({
+              title: 'Error',
+              message: `Error deleting users. ${error.message}`,
+              offset: 100,
+            });
             console.log("Error deleting users")
 
           });
@@ -99,11 +109,12 @@ export default {
           console.log(this.users)
         })
         .catch(error => {
-          console.log("Error fetching users")
-          // ElMessageBox.alert('Error fetching users！.', 'Alert', {
-          //   confirmButtonText: 'Back',
-          //   type: 'warning'
-          // });
+          ElNotification.error({
+            title: 'Error',
+            message: `Error fetching users list. ${error.message}`,
+            offset: 100,
+          });
+
         });
 
   }

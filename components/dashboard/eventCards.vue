@@ -85,6 +85,11 @@ export default {
             console.log(this.eventList)
           })
           .catch(error => {
+            ElNotification.error({
+              title: 'Error',
+              message: `Error getting events. ${error.message}`,
+              offset: 100,
+            });
             console.log("Error fetching Events")
 
           });
@@ -110,6 +115,11 @@ export default {
               // Refresh the venue list or update UI as needed
             }, )
             .catch((error) => {
+              ElNotification.error({
+                title: 'Error',
+                message: `Error deleting event. ${error.message}`,
+                offset: 100,
+              });
               console.log("Error deleting event ",error);
             });
       }

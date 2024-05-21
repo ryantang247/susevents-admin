@@ -22,7 +22,7 @@ import VenueForm from "~/components/forms/venueForm.vue";
 import UserForm from "~/components/forms/userForm.vue";
 import {SeatsioDesigner, SeatsioEventManager, SeatsioSeatingChart} from '@seatsio/seatsio-vue';
 import EventForm from "~/components/forms/eventForm.vue";
-import axios from "axios";
+
 const username = '5f4908aa-ff2b-42c5-ad29-62a8d60b8207';
 
 // Website provided automatic base64 encoding
@@ -42,25 +42,6 @@ export default {
     currentChartKey: null,
     objects:[]
   }),
-
-  mounted() {
-
-    // axios.get('https://api-oc.seatsio.net/charts', {
-    //   auth: {
-    //     username: username,
-    //     password: password
-    //   }
-    // })
-    //     .then(response => {
-    //       console.log("Get chart successfully")
-    //       console.log(response.data)
-    //     })
-    //     .catch(error => {
-    //       console.error("An error occurred:", error);
-    //     });
-
-
-  }
 
 }
 </script>

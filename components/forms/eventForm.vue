@@ -239,11 +239,21 @@ export default {
             .then(response => {
               console.log("Event created successfully");
               this.isWaiting = false
+              ElNotification.success({
+                title: 'Success',
+                message: "Sucessfully created event!",
+                offset: 100,
+              })
               return navigateTo('/events', { redirectCode: 200 })
 
             })
             .catch(error => {
               this.isWaiting = false
+              ElNotification.error({
+                title: 'Error',
+                message: "Error creating event: " + error,
+                offset: 100,
+              })
               console.log("Error creating event:", error);
             });
       }else {

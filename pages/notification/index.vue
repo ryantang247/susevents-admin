@@ -107,10 +107,11 @@ export default {
             console.log("Notifcation created successfully");
             this.isWaiting = false
             ElNotification.success({
-              title: 'Copied',
+              title: 'Success',
               message: "Sucessfully notified!",
               offset: 100,
-            });
+            }
+            );
             this.canSubmit = true
 
             return navigateTo('/events', { redirectCode: 200 })
@@ -121,7 +122,7 @@ export default {
             this.canSubmit = true
             console.log("Error creating notification:", error);
             ElNotification.error({
-              title: 'Copied',
+              title: 'Error',
               message: "Error sending notification" + error,
               offset: 100,
             });

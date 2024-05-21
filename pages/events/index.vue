@@ -10,9 +10,6 @@
   </v-row>
 </template>
 
-
-
-
 <script>
 import MenuList from "~/components/dashboard/MenuList.vue";
 import Header from "~/components/dashboard/Header.vue";
