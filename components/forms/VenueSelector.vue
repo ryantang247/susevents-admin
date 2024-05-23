@@ -69,15 +69,26 @@ export default {
               this.venueList.push(item)
 
             });
-              if (this.receivedVenueId) {
-                const foundVenue = this.venueList.find(venue => venue.id === this.receivedVenueId);
-                if (foundVenue) {
-                  this.venueName = foundVenue.name;
-                }
+            if (this.receivedVenueId) {
+              const foundVenue = this.eventList.find(venue => venue.id === this.receivedVenueId);
+              if (foundVenue) {
+                this.eventName = foundVenue.name;
               }
+            }
+            ElNotification.success({
+              title: 'Success',
+              message: "Sucessfully fetch venues!",
+              offset: 100,
+            }
+            );
           }
           ).catch(error => {
         console.log("Error in Venues", error)
+        ElNotification.error({
+              title: 'Error',
+              message: "Error fetching venues" + error,
+              offset: 100,
+            });
       });
 
 

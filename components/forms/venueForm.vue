@@ -145,11 +145,20 @@ export default {
             .then(response => {
               console.log("Venue updated successfully")
               console.log(response)
+              ElNotification.success({
+                title: 'Success',
+                message: "Venue updated successfully!",
+                offset: 100,
+              })
               navigateTo('/venue')
             },)
             .catch(error => {
               console.log("Error updating venue")
-
+              ElNotification.error({
+                title: 'Error',
+                message: "Error updating events: " + error,
+                offset: 100,
+              })
             });
       }
 

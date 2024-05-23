@@ -236,9 +236,19 @@ export default {
         )
             .then(response => {
               console.log("User created successfully");
+              ElNotification.success({
+                title: 'Success',
+                message: `Success in creating users.`,
+                offset: 100,
+              });
             })
             .catch(error => {
               console.log("Error creating user:", error);
+              ElNotification.error({
+                title: 'Error',
+                message: `Error creating users. ${error.message}`,
+                offset: 100,
+              });
             });
       }
     }

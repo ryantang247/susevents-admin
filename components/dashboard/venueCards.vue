@@ -85,10 +85,20 @@ export default {
 
             });
             console.log(this.venueList)
+            ElNotification.success({
+              title: 'Success',
+              message: "Venues sucessfully retrieved!",
+              offset: 100,
+            }
+            );
           })
           .catch(error => {
             console.log("Error fetching Venues")
-
+            ElNotification.error({
+              title: 'Error',
+              message: "Error getting venues" + error,
+              offset: 100,
+            });
           });
     },
 
@@ -110,9 +120,20 @@ export default {
                 console.log("Venue deleted successfully ",response);
                 this.venueList = this.venueList.filter((venue) => venue.id !== item.id);
                 // Refresh the venue list or update UI as needed
+                ElNotification.success({
+                  title: 'Success',
+                  message: "Sucessfully deleted!",
+                  offset: 100,
+                }
+                );
               })
               .catch((error) => {
                 console.log("Error deleting venue ",error);
+                ElNotification.error({
+                  title: 'Error',
+                  message: "Error deleting venue" + error,
+                  offset: 100,
+                });
               });
         }
       },
