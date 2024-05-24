@@ -271,11 +271,21 @@ export default {
             .then(response => {
               console.log("Event updated successfully");
               this.isWaiting = false
+              ElNotification.success({
+                title: 'Success',
+                message: "Sucessfully updated event!",
+                offset: 100,
+              })
               return navigateTo('/events', { redirectCode: 200 })
 
             })
             .catch(error => {
               this.isWaiting = false
+              ElNotification.error({
+                title: 'Error',
+                message: "Error updating event: " + error,
+                offset: 100,
+              })
               console.log("Error updating event:", error);
             });
       }
