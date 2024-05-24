@@ -106,7 +106,7 @@ export default {
           response.data.forEach(item => {
 
             if(item.order){
-
+              var transactionType = "unknown";
               if(item.status ===1){
                 transactionType = "Purchase"
               }else if(item.status ===2){
