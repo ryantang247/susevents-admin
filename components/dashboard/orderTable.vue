@@ -61,6 +61,19 @@ export default {
     };
   },
   methods:{
+    changeDateFormat(isoDateString){
+
+      const date = new Date(isoDateString);
+
+  // Extract the date components
+        const day = String(date.getUTCDate()).padStart(2, '0'); // Ensure 2 digits
+        const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+        const year = String(date.getUTCFullYear()).slice(-2); // Get last 2 digits of the year
+
+  // Format the date as dd/mm/yy
+      return `${day}/${month}/${year}`
+    },
+
     refundItem(item){
       axios.post('https://secourse2024-675d60a0d98b.herokuapp.com/api/refundTransaction', {
         orderId: item.id,
@@ -89,34 +102,40 @@ export default {
     })
         .then(response => {
           console.log("Transaction fetch successfully")
-          // console.log(response.data)
+          console.log(response.data)
           response.data.forEach(item => {
 
-            var transactionType = "unknown";
-            if(item.status ===1){
-              transactionType = "Purchase"
-            }else if(item.status ===2){
-              transactionType = "Refunded"
+            if(item.order){
 
-            }else {
-              transactionType = "unknown"
+              if(item.status ===1){
+                transactionType = "Purchase"
+              }else if(item.status ===2){
+                transactionType = "Refunded"
+
+              }else {
+                transactionType = "unknown"
+              }
+
+              var name = "Deleted"
+              if (item && item.order && item.order.user && item.order.user.sid) {
+                name = item.order.user.sid;
+              }
+
+              const newData = {
+                name: name,
+                date: this.changeDateFormat(item.createdAt),
+                id: item.order.id,
+                description: transactionType,
+                amount: item.order.price,
+                refund: transactionType === 'Purchase'
+              }
+              console.log(newData)
+
+              this.transactions.push(newData)
+
             }
-
-
-            const newData = {
-              name: item.order.user.sid,
-              date: item.createdAt,
-              id: item.order.id,
-              description: transactionType,
-              amount: item.price,
-              refund: transactionType === 'Purchase'
             }
-            console.log(newData)
-
-            this.transactions.push(newData)
-
-          });
-        })
+        )})
         .catch(error => {
           console.log("Error fetching Events",error)
 
