@@ -69,6 +69,11 @@ export default {
       this.selectedVenue = this.venueData.id
       } catch (error) {
         console.error('Error fetching image:', error);
+        ElNotification.error({
+          title: 'Error',
+          message: `Error fetching image. ${error.message}`,
+          offset: 100,
+        });
       }
     }
   },

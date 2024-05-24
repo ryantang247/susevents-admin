@@ -87,7 +87,7 @@ export default {
             console.log(this.venueList)
             ElNotification.success({
               title: 'Success',
-              message: "Venues sucessfully retrieved!",
+              message: "Sucessfully fetch venues!",
               offset: 100,
             }
             );
@@ -96,7 +96,7 @@ export default {
             console.log("Error fetching Venues")
             ElNotification.error({
               title: 'Error',
-              message: "Error getting venues" + error,
+              message: "Error fetching venues" + error,
               offset: 100,
             });
           });
