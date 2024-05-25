@@ -14,6 +14,11 @@ export function fetchVenues() {
             .catch(error => {
                 console.log("Error fetching Venues:", error);
                 reject(error); // Reject the Promise with the error
+                ElNotification.error({
+                    title: 'Error',
+                    message: `Error fetching venues. ${error.message}`,
+                    offset: 100,
+                  });          
             });
     });
 }

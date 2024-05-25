@@ -83,8 +83,8 @@ export default {
             );
           }
           ).catch(error => {
-        console.log("Error in Venues", error)
-        ElNotification.error({
+            console.log("Error in Venues", error)
+            ElNotification.error({
               title: 'Error',
               message: "Error fetching venues" + error,
               offset: 100,

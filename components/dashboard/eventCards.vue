@@ -91,7 +91,11 @@ export default {
               offset: 100,
             });
             console.log("Error fetching Events")
-
+            ElNotification.error({
+              title: 'Error',
+              message: `Error fetching events. ${error.message}`,
+              offset: 100,
+            });    
           });
     },
 
