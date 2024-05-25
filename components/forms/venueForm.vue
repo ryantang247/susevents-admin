@@ -17,14 +17,14 @@
       ></v-text-field>
       <v-row cols="auto">
         <v-col >
-          <v-text-field type="number" v-model="xcoord"></v-text-field>
+          <v-text-field id="xcoord" type="number" v-model="xcoord"></v-text-field>
         </v-col>
         <v-col>
-          <v-text-field type="number" v-model="ycoord"></v-text-field>
+          <v-text-field id="ycoord" type="number" v-model="ycoord"></v-text-field>
         </v-col>
       </v-row>
       <v-file-input @change="onFileChanged($event)" label="Select Thumbnail"></v-file-input>
-      <location-getter @coordinates-selected="handleCoordinates"/>
+      <location-getter id="getloc" @coordinates-selected="handleCoordinates"/>
 
       <v-btn
           class="me-4"
