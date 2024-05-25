@@ -115,23 +115,28 @@ export default {
               }else {
                 transactionType = "unknown"
               }
+              const eventDate = this.changeDateFormat(item.createdAt)
 
-              var name = "Deleted"
-              if (item && item.order && item.order.user && item.order.user.sid) {
-                name = item.order.user.sid;
-              }
+              item.order.forEach((item)=>{
+                var name = "Deleted"
 
-              const newData = {
-                name: name,
-                date: this.changeDateFormat(item.createdAt),
-                id: item.order.id,
-                description: transactionType,
-                amount: item.order.price,
-                refund: transactionType === 'Purchase'
-              }
-              console.log(newData)
+                if (item && item.user && item.user.sid) {
+                  name = item.user.sid;
+                }
 
-              this.transactions.push(newData)
+                const newData = {
+                  name: name,
+                  date: eventDate,
+                  id: item.id,
+                  description: transactionType,
+                  amount: item.price,
+                  refund: transactionType === 'Purchase'
+                }
+                console.log(newData)
+
+                this.transactions.push(newData)
+              })
+
 
             }
             }
