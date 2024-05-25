@@ -61,10 +61,25 @@ export default {
     };
   },
   methods:{
+    changeDateFormat(isoDateString){
+
+      const date = new Date(isoDateString);
+
+  // Extract the date components
+        const day = String(date.getUTCDate()).padStart(2, '0'); // Ensure 2 digits
+        const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+        const year = String(date.getUTCFullYear()).slice(-2); // Get last 2 digits of the year
+
+  // Format the date as dd/mm/yy
+      return `${day}/${month}/${year}`
+    },
+
     refundItem(item){
       axios.post('https://secourse2024-675d60a0d98b.herokuapp.com/api/refundTransaction', {
         orderId: item.id,
         price: Number(item.amount)
+      },{
+        withCredentials:true
       })
           .then((response) => {
             console.log(response);
@@ -82,37 +97,50 @@ export default {
     }
   },
   mounted(){
-    axios.get('https://secourse2024-675d60a0d98b.herokuapp.com/api/getAllTransaction')
+    axios.get('https://secourse2024-675d60a0d98b.herokuapp.com/api/getAllTransaction',{
+      withCredentials:true
+    })
         .then(response => {
           console.log("Transaction fetch successfully")
-          // console.log(response.data)
+          console.log(response.data)
           response.data.forEach(item => {
 
-            var transactionType = "unknown";
-            if(item.status ===1){
-              transactionType = "Purchase"
-            }else if(item.status ===2){
-              transactionType = "Refunded"
+            if(item.order){
+              var transactionType = "unknown";
+              if(item.status ===1){
+                transactionType = "Purchase"
+              }else if(item.status ===2){
+                transactionType = "Refunded"
 
-            }else {
-              transactionType = "unknown"
+              }else {
+                transactionType = "unknown"
+              }
+              const eventDate = this.changeDateFormat(item.createdAt)
+
+              item.order.forEach((item)=>{
+                var name = "Deleted"
+
+                if (item && item.user && item.user.sid) {
+                  name = item.user.sid;
+                }
+
+                const newData = {
+                  name: name,
+                  date: eventDate,
+                  id: item.id,
+                  description: transactionType,
+                  amount: item.price,
+                  refund: transactionType === 'Purchase'
+                }
+                console.log(newData)
+
+                this.transactions.push(newData)
+              })
+
+
             }
-
-
-            const newData = {
-              name: item.order.user.sid,
-              date: item.createdAt,
-              id: item.order.id,
-              description: transactionType,
-              amount: item.price,
-              refund: transactionType === 'Purchase'
             }
-            console.log(newData)
-
-            this.transactions.push(newData)
-
-          });
-        })
+        )})
         .catch(error => {
           console.log("Error fetching Events",error)
 

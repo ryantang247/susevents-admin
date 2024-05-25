@@ -19,9 +19,14 @@
 
       <v-text-field
           v-model="this.password"
+          :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+          :rules="[rules.required, rules.min]"
+          :type="show1 ? 'text' : 'password'"
+          hint="At least 8 characters"
           label="Password"
-          required
-
+          name="input-10-1"
+          counter
+          @click:append="show1 = !show1"
       ></v-text-field>
       <v-text-field
           v-model="this.email"
@@ -116,7 +121,13 @@ export default {
       image: null,
       password:'',
       isAdmin: null,
-      email: ''
+      email: '',
+      show1: '',
+      rules: {
+        required: value => !!value || 'Required.',
+        min: v => v.length >= 8 || 'Min 8 characters',
+
+      },
     }
   },
   mounted() {
@@ -159,6 +170,11 @@ export default {
           console.log(base64String);
         };
         reader.onerror = error => {
+          ElNotification.error({
+            title: 'Error',
+            message: `Error reading file. ${error.message}`,
+            offset: 100,
+          });c
           console.error('Error reading file:', error);
         };
       }
@@ -166,19 +182,31 @@ export default {
     submitForm(){
 
       if (this.isEdit) {
-        axios.patch(`http://localhost:3453/api/updateUser/${this.editUser.id}`, {
+        axios.patch(`https://secourse2024-675d60a0d98b.herokuapp.com/api/updateUser/${this.editUser.id}`, {
               sid: this.sid,
               name: this.name,
               password: this.password,
               status: this.isAdmin,
               email: this.email,
               avatar: this.image
-            },
+            },{
+              withCredentials:true
+            }
         )
             .then(response => {
+              ElNotification.success({
+                title: 'Success',
+                message: `Success in updating users.`,
+                offset: 100,
+              });
               console.log("User updated successfully");
             })
             .catch(error => {
+              ElNotification.error({
+                title: 'Error',
+                message: `Error updating users. ${error.message}`,
+                offset: 100,
+              });
               console.log("Error updating user:", error);
             });
       } else {
@@ -192,23 +220,35 @@ export default {
               avatar: this.image
             }
         )
-        axios.post(`http://localhost:3453/api/createUser`, {
+        axios.post(`https://secourse2024-675d60a0d98b.herokuapp.com/api/createUser`, {
 
 
           sid: this.sid,
           name: this.name,
-          avatar: this.image.toString('base64'),
+          avatar: this.image ? this.image.toString('base64') : null,
           password: this.password,
           status: this.isAdmin,
           email: this.email,
 
-        }
+        },{
+              withCredentials:true
+            }
         )
             .then(response => {
               console.log("User created successfully");
+              ElNotification.success({
+                title: 'Success',
+                message: `Success in creating users.`,
+                offset: 100,
+              });
             })
             .catch(error => {
               console.log("Error creating user:", error);
+              ElNotification.error({
+                title: 'Error',
+                message: `Error creating users. ${error.message}`,
+                offset: 100,
+              });
             });
       }
     }

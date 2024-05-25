@@ -1,6 +1,6 @@
 <template>
   <div class="center">
-  <LoginForm/>
+    <LoginForm/>
   </div>
 </template>
 
@@ -11,14 +11,14 @@ import LoginForm from "~/components/auth/LoginForm.vue";
 
 export default {
   components: {LoginForm, Header, MenuList},
-
 }
 </script>
+
 <style scoped>
 .center {
   display: flex;
-  flex-direction: row;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
   height: 100vh;
 }
-
 </style>

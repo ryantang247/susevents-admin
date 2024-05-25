@@ -65,19 +65,28 @@ export default {
             console.log("Venues fetch successfully")
             // console.log(response.data)
             response.data.forEach(item => {
-
               this.eventList.push(item)
-
             });
-              if (this.receivedVenueId) {
-                const foundVenue = this.eventList.find(venue => venue.id === this.receivedVenueId);
-                if (foundVenue) {
-                  this.eventName = foundVenue.name;
-                }
+            if (this.receivedVenueId) {
+              const foundVenue = this.eventList.find(venue => venue.id === this.receivedVenueId);
+              if (foundVenue) {
+                this.eventName = foundVenue.name;
               }
+            }
+            ElNotification.success({
+              title: 'Success',
+              message: "Sucessfully fetch venues!",
+              offset: 100,
+            }
+            );
           }
           ).catch(error => {
-        console.log("Error in Venues", error)
+            console.log("Error in Venues", error)
+            ElNotification.error({
+              title: 'Error',
+              message: "Error fetching venues" + error,
+              offset: 100,
+            });
       });
 
 

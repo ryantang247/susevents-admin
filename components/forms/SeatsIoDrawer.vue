@@ -94,7 +94,7 @@ import {SeatsioDesigner} from "@seatsio/seatsio-vue";
 
 export default {
   name: 'SeatsIoDrawer',
-  emits:['can-submit', 'pricing', 'seatio-eventkey',  'seatio-chartkey,capacity'],
+  emits:['can-submit', 'pricing', 'seatio-eventkey',  'seatio-chartkey','capacity'],
   components: {SeatsioDesigner},
   data() {
     return {
@@ -138,6 +138,7 @@ export default {
         this.isSeated = !this.isSeated
         this.dialogOpen = true
         this.pricing = []
+        this.$emit('seatio-eventkey', null)
 
       }
     },
@@ -174,7 +175,6 @@ export default {
               console.log("Event created successfully",response.data)
               this.seatsioEventsKey = response.data.key
               this.$emit('seatio-eventkey', this.seatsioEventsKey)
-
               axios.get(
                   `https://api-oc.seatsio.net/reports/events/${this.seatsioEventsKey}/byAvailabilityReason/summary`,
                   {
@@ -209,14 +209,26 @@ export default {
                     this.$emit('can-submit', true)
                     console.log(this.pricing)
                   })
-
+              ElNotification.success({
+                title: 'Success',
+                message: "Sucessfully created event!",
+                offset: 100,
+              }
+              );
             })
             .catch(error => {
               console.log("Error ",error )
+              ElNotification.error({
+              title: 'Error',
+              message: "Error in save Seating Mechanism" + error,
+              offset: 100,
+            });
             });
 
 
       } else {
+        this.$emit('can-submit', true)
+
         console.log('Chart not complete!');
       }
     },

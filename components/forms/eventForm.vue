@@ -46,6 +46,12 @@
           required
 
       ></v-text-field>
+      <v-text-field
+          v-model="this.formdata.videolink"
+          label="Live streaming link"
+          required
+
+      ></v-text-field>
       <el-select
           v-model="formdata.category"
           placeholder="Select category"
@@ -110,16 +116,17 @@ export default {
   data(){
     return{
       formdata:{
-        title: '',
-        contactName: '',
-        description:'',
-        venueId:'',
-        contact:'',
+        title: null,
+        contactName: null,
+        description: null,
+        venueId: null,
+        contact: null,
         thumbnail: null,
         seatsioChartKey: null,
         seatsioEventsKey: null,
-        startDate:'',
-        endDate: '',
+        startDate: null,
+        endDate: null,
+        videolink: null,
         registrationDate: null,
         price: null,
         category: null,
@@ -232,29 +239,53 @@ export default {
         this.formdata.price = JSON.stringify(this.pricing);
         this.formdata.registrationDate = new Date().toLocaleDateString();
 
-        axios.post(`https://secourse2024-675d60a0d98b.herokuapp.com/api/createEvent`, this.formdata
+        axios.post(`https://secourse2024-675d60a0d98b.herokuapp.com/api/createEvent`, this.formdata,{
+              withCredentials:true
+            }
         )
             .then(response => {
               console.log("Event created successfully");
               this.isWaiting = false
+              ElNotification.success({
+                title: 'Success',
+                message: "Sucessfully created event!",
+                offset: 100,
+              })
               return navigateTo('/events', { redirectCode: 200 })
 
             })
             .catch(error => {
               this.isWaiting = false
+              ElNotification.error({
+                title: 'Error',
+                message: "Error creating event: " + error,
+                offset: 100,
+              })
               console.log("Error creating event:", error);
             });
       }else {
-        axios.patch(`https://secourse2024-675d60a0d98b.herokuapp.com/api/updateEvent/${this.selectedEvent}`, this.formdata
+        axios.patch(`https://secourse2024-675d60a0d98b.herokuapp.com/api/updateEvent/${this.selectedEvent}`, this.formdata,{
+              withCredentials:true
+            }
         )
             .then(response => {
               console.log("Event updated successfully");
               this.isWaiting = false
+              ElNotification.success({
+                title: 'Success',
+                message: "Sucessfully updated event!",
+                offset: 100,
+              })
               return navigateTo('/events', { redirectCode: 200 })
 
             })
             .catch(error => {
               this.isWaiting = false
+              ElNotification.error({
+                title: 'Error',
+                message: "Error updating event: " + error,
+                offset: 100,
+              })
               console.log("Error updating event:", error);
             });
       }

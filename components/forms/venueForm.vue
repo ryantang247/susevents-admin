@@ -17,14 +17,14 @@
       ></v-text-field>
       <v-row cols="auto">
         <v-col >
-          <v-text-field type="number" v-model="xcoord"></v-text-field>
+          <v-text-field id="xcoord" type="number" v-model="xcoord"></v-text-field>
         </v-col>
         <v-col>
-          <v-text-field type="number" v-model="ycoord"></v-text-field>
+          <v-text-field id="ycoord" type="number" v-model="ycoord"></v-text-field>
         </v-col>
       </v-row>
       <v-file-input @change="onFileChanged($event)" label="Select Thumbnail"></v-file-input>
-      <location-getter @coordinates-selected="handleCoordinates"/>
+      <location-getter id="getloc" @coordinates-selected="handleCoordinates"/>
 
       <v-btn
           class="me-4"
@@ -60,8 +60,7 @@ export default {
     // If in edit mode and editUser is provided, autofill the form
     if (this.isEdit) {
       try{
-      // const imageBlob = await this.fetchImage(this.venueData.thumbnail);
-      // console.log('data:image/png;base64,'+imageBlob)
+
       this.name = this.venueData.name || '';
       this.description = this.venueData.description || '';
       this.image = this.venueData.thumbnail || '';
@@ -70,24 +69,15 @@ export default {
       this.selectedVenue = this.venueData.id
       } catch (error) {
         console.error('Error fetching image:', error);
+        ElNotification.error({
+          title: 'Error',
+          message: `Error fetching image. ${error.message}`,
+          offset: 100,
+        });
       }
     }
   },
   methods:{
-    // fetchImage(url) {
-    //   return axios
-    //       .get(url, {
-    //         responseType: 'arraybuffer'
-    //       })
-    //       .then(response => {
-    //
-    //         return Buffer.from(response.data, 'binary').toString('base64');
-    //       })
-    //       .catch(error => {
-    //         console.error('Error fetching image:', error);
-    //         throw error; // Rethrow the error to handle it in the caller if necessary
-    //       });
-    // },
     handleCoordinates({ lng, lat }){
       this.xcoord = lng
       this.ycoord = lat
@@ -104,6 +94,11 @@ export default {
           // console.log('Uploaded image', base64String); // This is the Base64-encoded image data
         };
         reader.onerror = error => {
+          ElNotification.error({
+            title: 'Error parsing image',
+            message: "There is problem in image parsing!",
+            offset: 100,
+          })
           console.error('Error reading file:', error);
         };
       }
@@ -124,9 +119,19 @@ export default {
             .then(response => {
               console.log("Venue created successfully")
               console.log(response)
+              ElNotification.success({
+                title: 'Success',
+                message: "Venue created successfully!",
+                offset: 100,
+              })
               navigateTo('/venue')
             },)
             .catch(error => {
+              ElNotification.error({
+                title: 'Error',
+                message: "Error creating events: " + error,
+                offset: 100,
+              })
               console.log("Error creating venue")
 
             });
@@ -145,11 +150,20 @@ export default {
             .then(response => {
               console.log("Venue updated successfully")
               console.log(response)
+              ElNotification.success({
+                title: 'Success',
+                message: "Venue updated successfully!",
+                offset: 100,
+              })
               navigateTo('/venue')
             },)
             .catch(error => {
               console.log("Error updating venue")
-
+              ElNotification.error({
+                title: 'Error',
+                message: "Error updating events: " + error,
+                offset: 100,
+              })
             });
       }
 
