@@ -62,7 +62,6 @@ export default {
     insertVenue(){
       axios.get('https://secourse2024-675d60a0d98b.herokuapp.com/api/getAllVenues')
           .then(response => {
-            console.log("Venues fetch successfully")
             // console.log(response.data)
             response.data.forEach(item => {
 
@@ -83,7 +82,6 @@ export default {
             );
           }
           ).catch(error => {
-            console.log("Error in Venues", error)
             ElNotification.error({
               title: 'Error',
               message: "Error fetching venues" + error,
