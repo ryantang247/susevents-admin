@@ -200,6 +200,8 @@ export default {
                 offset: 100,
               });
               console.log("User updated successfully");
+              navigateTo('/users')
+
             })
             .catch(error => {
               ElNotification.error({
@@ -241,6 +243,7 @@ export default {
                 message: `Success in creating users.`,
                 offset: 100,
               });
+              navigateTo('/users')
             })
             .catch(error => {
               console.log("Error creating user:", error);
