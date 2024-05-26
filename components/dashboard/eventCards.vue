@@ -82,7 +82,6 @@ export default {
               this.eventList.push(item)
 
             });
-            console.log(this.eventList)
           })
           .catch(error => {
             ElNotification.error({
@@ -105,8 +104,7 @@ export default {
     },
 
     deleteItem(item) {
-      // Show confirmation dialog
-      console.log(item)
+
       if (confirm("Are you sure you want to delete this item?")) {
         // User confirmed, proceed with deletion
         axios
@@ -115,6 +113,11 @@ export default {
             })
             .then((response) => {
               console.log("Event deleted successfully ",response);
+              ElNotification.success({
+                title: 'Success',
+                message: `Event deleted successfully.`,
+                offset: 100,
+              });
               this.eventList = this.eventList.filter((venue) => venue.id !== item.id);
               // Refresh the venue list or update UI as needed
             }, )

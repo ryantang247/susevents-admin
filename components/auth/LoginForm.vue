@@ -59,7 +59,6 @@ export default {
     async login() {
       try {
         // Perform login logic here
-        console.log('Logging in with:', this.sid, this.password);
         const response = await axios.post('https://secourse2024-675d60a0d98b.herokuapp.com/api/login', {
           sid: this.sid,
           password: this.password
@@ -70,7 +69,6 @@ export default {
 
 
         console.log("User login successfully");
-        console.log(response.data);
 
         // Set cookie asynchronously
         const cookie = await useCookie('secourse');

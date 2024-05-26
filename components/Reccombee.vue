@@ -29,20 +29,14 @@ export default {
         'hmac_timestamp=' +
         parseInt(new Date().getTime() / 1000);
     this.url += time
-    console.log("Mid way ", this.url)
 
     // Generate HMAC signature
     const shaObj = new jsSHA('SHA-1', 'TEXT');
     shaObj.setHMACKey(this.key, 'TEXT');
     shaObj.update(this.url);
     const signature = shaObj.getHMAC('HEX');
-
-    console.log("After processing ", this.url)
-
-
     // Append frontend_sign to the URL
     this.signedUrl = this.originalurl + time +'&hmac_sign=' + signature;
-    console.log("Signed url ", this.signedUrl)
   }
 };
 </script>

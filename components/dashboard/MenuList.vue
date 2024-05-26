@@ -136,7 +136,7 @@ export default {
       this.username = localStorage.getItem("Username")
       this.sid = localStorage.getItem("SID")
       this.avatar = localStorage.getItem("Avatar")
-      console.log(this.username)
+
     }
   },
   data: () => ({

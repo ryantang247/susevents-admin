@@ -182,29 +182,29 @@ export default {
       this.formdata.endDate = value
     },
     handleCanSubmit(canSubmit) {
-      console.log('Can submit:', canSubmit);
+      // console.log('Can submit:', canSubmit);
       this.canSubmit = canSubmit
     },
     handlePricing(pricing) {
-      console.log('Received pricing:', pricing);
+      // console.log('Received pricing:', pricing);
       this.pricing = pricing
     },
     handleVenue(venueID){
-      console.log('Received venue:', venueID);
+      // console.log('Received venue:', venueID);
       this.formdata.venueId = venueID
     },
     handleEventKey(eventKey) {
-      console.log('Received event key:', eventKey);
+      // console.log('Received event key:', eventKey);
       this.formdata.seatsioEventsKey = eventKey
 
     },
     handleChartKey(chartKey) {
-      console.log('Received chart key:', chartKey);
+      // console.log('Received chart key:', chartKey);
       this.formdata.seatsioChartKey = chartKey
 
     },
     handleCapacity(capacity){
-      console.log('Received capactiy:', capacity);
+      // console.log('Received capactiy:', capacity);
       this.formdata.capacity = Number(capacity);
     },
     onFileChanged(event){
@@ -219,6 +219,8 @@ export default {
           // console.log('Uploaded image', base64String); // This is the Base64-encoded image data
         };
         reader.onerror = error => {
+
+
           console.error('Error reading file:', error);
         };
       }

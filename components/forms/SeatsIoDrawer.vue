@@ -172,7 +172,7 @@ export default {
             }
         )
             .then(response => {
-              console.log("Event created successfully",response.data)
+
               this.seatsioEventsKey = response.data.key
               this.$emit('seatio-eventkey', this.seatsioEventsKey)
               axios.get(

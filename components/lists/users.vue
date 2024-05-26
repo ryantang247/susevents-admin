@@ -4,7 +4,7 @@
       <v-data-table
           :headers="headers"
           :items="users"
-          item-key="name"
+          :item-key="users.id"
           :items-per-page="5"
 
           style="margin-top: 15px; "
@@ -16,10 +16,10 @@
         </template>
         <template v-slot:[`item.edit`]="{ item }">
           <div>
-            <v-btn icon  @click="editItem(item)">
+            <v-btn id="edit-user" icon  @click="editItem(item)">
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
-            <v-btn icon @click="deleteItem(item)">
+            <v-btn id="delete-user" icon @click="deleteItem(item)">
               <v-icon>mdi-delete</v-icon>
             </v-btn>
           </div>
