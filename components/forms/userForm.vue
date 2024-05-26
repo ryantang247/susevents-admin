@@ -146,9 +146,9 @@ export default {
       v$.value.$reset()
       this.name= ''
       this.sid =''
-      this.email= '',
-      this.select= null,
-      this.checkbox = null,
+      this.email= ''
+      this.select= null
+      this.checkbox = null
       this.isAdmin= false
     },
 
@@ -193,13 +193,13 @@ export default {
               withCredentials:true
             }
         )
-            .then(response => {
+            .then(() => {
               ElNotification.success({
                 title: 'Success',
                 message: `Success in updating users.`,
                 offset: 100,
               });
-              console.log("User updated successfully");
+
               navigateTo('/users')
 
             })
@@ -209,7 +209,7 @@ export default {
                 message: `Error updating users. ${error.message}`,
                 offset: 100,
               });
-              console.log("Error updating user:", error);
+
             });
       } else {
         console.log(
@@ -236,7 +236,7 @@ export default {
               withCredentials:true
             }
         )
-            .then(response => {
+            .then(() => {
               console.log("User created successfully");
               ElNotification.success({
                 title: 'Success',
