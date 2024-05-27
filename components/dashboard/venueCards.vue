@@ -1,10 +1,10 @@
 <template>
-  <div v-if="!isEdit">
+  <div v-if="!isEdit && venueList">
   <v-container>
     <v-row>
-      <v-col v-for="(user, index) in venueList" :key="index" cols="12" md="4">
+      <v-col  v-for="(user, index) in venueList" :key="index" cols="12" md="4">
         <v-hover v-slot="{ isHovering, props }">
-        <v-card v-bind="props" class="card-limit">
+        <v-card v-if="user.thumbnail" v-bind="props" class="card-limit">
           <v-img :src="user.thumbnail" alt="Avatar">
             <v-expand-transition>
               <div
@@ -12,11 +12,11 @@
                   class="d-flex align-center justify-center transition-fast-in-fast-out"
                   style="height: 100%; background-color: rgba(0, 0, 0, 0.5);"
               >
-                <v-btn icon @click="editItem(user)">
+                <v-btn id="edit-venue" @click="editItem(user)">
                   <v-icon>mdi-pencil</v-icon>
                 </v-btn>
 
-                <v-btn icon @click="deleteItem(user)">
+                <v-btn id="delete-venue" @click="deleteItem(user)">
                   <v-icon>mdi-delete</v-icon>
                 </v-btn>
               </div>

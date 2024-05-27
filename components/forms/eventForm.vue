@@ -30,13 +30,13 @@
           <!-- Start Date Picker -->
           <v-col cols="12" sm="6">
             <p>Start date</p>
-            <DatePicker :received-date="formdata.startDate" @value-emit="handleDate1"  />
+            <DatePicker id="start-date" :received-date="formdata.startDate" @value-emit="handleDate1"  />
           </v-col>
 
           <!-- End Date Picker -->
           <v-col cols="12" sm="6">
             <p>End date</p>
-            <DatePicker :received-date="formdata.endDate" @value-emit="handleDate2"/>
+            <DatePicker id="end-date" :received-date="formdata.endDate" @value-emit="handleDate2"/>
           </v-col>
         </v-row>
       </v-container>
@@ -56,7 +56,7 @@
           v-model="formdata.category"
           placeholder="Select category"
           size="large"
-          style="width: 100%; color: grey; margin-bottom: 20px; height: 40px; color: grey"
+          style="width: 100%; color: grey; margin-bottom: 20px; height: 40px;"
       >
         <el-option
             v-for="item in categoryList"
@@ -152,21 +152,21 @@ export default {
     // If in edit mode and editUser is provided, autofill the form
 
     if (this.isEdit) {
-        this.formdata.title= this.eventData.title || '',
-        this.formdata.contactName=this.eventData.contactName || '',
-        this.formdata.description=this.eventData.description ||'',
-        this.formdata.venueId= this.eventData.venueId|| '',
-        this.formdata.contact= this.eventData.contact|| '',
-        this.formdata.thumbnail= this.eventData.thumbnail|| null,
-        this.formdata.price = this.eventData.price || null,
-        this.formdata.seatsioChartKey= this.eventData.seatsioChartKey|| null,
-        this.formdata.seatsioEventsKey= this.eventData.seatsioEventsKey|| '',
-        this.formdata.registrationDate = this.eventData.registrationDate,
-        this.formdata.startDate= this.eventData.startDate|| null,
-        this.formdata.endDate= this.eventData.endDate || null,
-        this.formdata.category = this.eventData.category || null,
+        this.formdata.title= this.eventData.title || ''
+        this.formdata.contactName=this.eventData.contactName || ''
+        this.formdata.description=this.eventData.description ||''
+        this.formdata.venueId= this.eventData.venueId|| ''
+        this.formdata.contact= this.eventData.contact|| ''
+        this.formdata.thumbnail= this.eventData.thumbnail|| null
+        this.formdata.price = this.eventData.price || null
+        this.formdata.seatsioChartKey= this.eventData.seatsioChartKey|| null
+        this.formdata.seatsioEventsKey= this.eventData.seatsioEventsKey|| ''
+        this.formdata.registrationDate = this.eventData.registrationDate
+        this.formdata.startDate= this.eventData.startDate|| null
+        this.formdata.endDate= this.eventData.endDate || null
+        this.formdata.category = this.eventData.category || null
         this.formdata.status =  this.eventData.status
-        this.formdata.capacity = this.eventData.capacity || null,
+        this.formdata.capacity = this.eventData.capacity || null
         this.selectedEvent =  this.eventData.id
 
     }
@@ -214,8 +214,7 @@ export default {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => {
-          const base64String = reader.result;
-          this.formdata.thumbnail = base64String
+          this.formdata.thumbnail = reader.result
           // console.log('Uploaded image', base64String); // This is the Base64-encoded image data
         };
         reader.onerror = error => {
@@ -245,7 +244,7 @@ export default {
               withCredentials:true
             }
         )
-            .then(response => {
+            .then(() => {
               console.log("Event created successfully");
               this.isWaiting = false
               ElNotification.success({
@@ -270,7 +269,7 @@ export default {
               withCredentials:true
             }
         )
-            .then(response => {
+            .then(() => {
               console.log("Event updated successfully");
               this.isWaiting = false
               ElNotification.success({

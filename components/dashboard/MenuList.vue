@@ -1,10 +1,10 @@
 <template>
-  <v-app-bar-nav-icon v-if="this.$vuetify.display.mdAndDown" variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+  <v-app-bar-nav-icon v-if="$vuetify.display.mdAndDown" variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
   <v-container v-model="drawer" style="margin: 0" >
     <v-row>
       <v-col cols="auto">
         <v-card
-            v-if="!this.$vuetify.display.mdAndDown"
+            v-if="!$vuetify.display.mdAndDown"
             class="mx-auto"
             width="256"
         >
@@ -70,7 +70,7 @@
     </v-row>
   </v-container>
 
-  <v-navigation-drawer v-if="this.$vuetify.display.mdAndDown"
+  <v-navigation-drawer v-if="$vuetify.display.mdAndDown"
       v-model="drawer"
       location="bottom"
       temporary
@@ -97,15 +97,6 @@
 </template>
 
 <style scoped>
-
-.v-btn{
-  padding: 30px;
-}
-
-.v-list-item{
-  padding: 20px;
-}
-
 .nav-drawer {
   height: 100vh;
   overflow-y: auto; /* Enable scrolling if content exceeds viewport height */
