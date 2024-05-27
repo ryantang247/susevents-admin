@@ -4,8 +4,6 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 on:
   push:
-    branches-ignore:
-      - main
 jobs:
   run-e2es:
     runs-on: ubuntu-latest
