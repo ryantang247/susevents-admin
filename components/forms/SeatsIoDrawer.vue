@@ -207,7 +207,7 @@ export default {
                     this.pricing = this.eventCategories.map(category => ({ category, price: null }));
                     this.$emit('pricing', this.pricing)
                     this.$emit('can-submit', true)
-                    console.log(this.pricing)
+
                   })
               ElNotification.success({
                 title: 'Success',

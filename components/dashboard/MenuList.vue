@@ -1,10 +1,9 @@
 <template>
   <v-app-bar-nav-icon v-if="$vuetify.display.mdAndDown" variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-  <v-container v-model="drawer" style="margin: 0" >
+  <v-container v-if="!$vuetify.display.mdAndDown" v-model="drawer" style="margin: 0" >
     <v-row>
       <v-col cols="auto">
         <v-card
-            v-if="!$vuetify.display.mdAndDown"
             class="mx-auto"
             width="256"
         >
