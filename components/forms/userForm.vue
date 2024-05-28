@@ -243,7 +243,7 @@ export default {
                 message: `Success in creating users.`,
                 offset: 100,
               });
-              navigateTo('/users')
+              navigateTo('/user')
             })
             .catch(error => {
               console.log("Error creating user:", error);
