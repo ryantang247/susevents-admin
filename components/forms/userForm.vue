@@ -68,6 +68,7 @@ import VenueForm from "~/components/forms/venueForm.vue";
 import Header from "~/components/dashboard/Header.vue";
 import MenuList from "~/components/dashboard/MenuList.vue";
 import axios from "axios";
+import { ElLoading, ElNotification } from 'element-plus';
 
 
 const rules = {
@@ -151,6 +152,19 @@ export default {
       this.checkbox = null,
       this.isAdmin= false
     },
+    showLoading() {
+      this.loadingInstance = ElLoading.service({
+        fullscreen: true,
+        background: 'rgba(0, 0, 0, 0.7)',
+      });
+    },
+
+    // Method to hide loading indicator
+    hideLoading() {
+      if (this.loadingInstance) {
+        this.loadingInstance.close();
+      }
+    },
 
     /**
      * AI-generated-content
@@ -180,7 +194,7 @@ export default {
       }
     },
     submitForm(){
-
+      this.showLoading();
       if (this.isEdit) {
         axios.patch(`https://secourse2024-675d60a0d98b.herokuapp.com/api/updateUser/${this.editUser.id}`, {
               sid: this.sid,
@@ -194,6 +208,7 @@ export default {
             }
         )
             .then(response => {
+              this.hideLoading();
               ElNotification.success({
                 title: 'Success',
                 message: `Success in updating users.`,
@@ -202,6 +217,7 @@ export default {
               console.log("User updated successfully");
             })
             .catch(error => {
+              this.hideLoading();
               ElNotification.error({
                 title: 'Error',
                 message: `Error updating users. ${error.message}`,
@@ -235,6 +251,7 @@ export default {
             }
         )
             .then(response => {
+              this.hideLoading();
               console.log("User created successfully");
               ElNotification.success({
                 title: 'Success',
@@ -243,6 +260,7 @@ export default {
               });
             })
             .catch(error => {
+              this.hideLoading();
               console.log("Error creating user:", error);
               ElNotification.error({
                 title: 'Error',

@@ -42,7 +42,7 @@
   </div>
 </template>
 <script>
-import {ElMessageBox } from "element-plus";
+import { ElMessageBox, ElLoading, ElNotification } from "element-plus";
 import axios from "axios";
 import Newuser from "~/pages/user/newuser.vue";
 import UserForm from "~/components/forms/userForm.vue";

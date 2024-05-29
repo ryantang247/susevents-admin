@@ -42,6 +42,7 @@
 
 <script>
 import axios from "axios";
+import { ElLoading, ElNotification } from 'element-plus';
 
 export default {
   data() {
@@ -57,6 +58,11 @@ export default {
   },
   methods: {
     async login() {
+      const loading = ElLoading.service({
+        lock: true,
+        text: 'Loading...',
+        background: 'rgba(0, 0, 0, 0.7)',
+      });
       try {
         // Perform login logic here
         console.log('Logging in with:', this.sid, this.password);
@@ -88,6 +94,9 @@ export default {
           offset: 100,
         });
 
+      }
+      finally {
+        loading.close();
       }
     }
   }

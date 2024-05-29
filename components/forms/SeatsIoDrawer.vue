@@ -91,6 +91,7 @@
 import axios from "axios";
 import userconfig from "~/userconfig.json";
 import {SeatsioDesigner} from "@seatsio/seatsio-vue";
+import { ElLoading, ElNotification } from 'element-plus';
 
 export default {
   name: 'SeatsIoDrawer',
