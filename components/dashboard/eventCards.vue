@@ -20,10 +20,10 @@
                       class="d-flex align-center justify-center transition-fast-in-fast-out"
                       style="height: 100%; background-color: rgba(0, 0, 0, 0.5);"
                   >
-                    <v-btn icon @click="editItem(event)">
+                    <v-btn @click="editItem(event)">
                       <v-icon>mdi-pencil</v-icon>
                     </v-btn>
-                    <v-btn icon @click="deleteItem(event)">
+                    <v-btn @click="deleteItem(event)">
                       <v-icon>mdi-delete</v-icon>
                     </v-btn>
                   </div>
@@ -31,7 +31,7 @@
 
               </v-img>
               <v-card-text>
-                <div>Name: {{ event.name }}</div>
+                <div>Name: {{ event.title }}</div>
                 <div>{{ event.description }}</div>
                 <div>{{ event.startDate }} {{event.endDate}}}</div>
               </v-card-text>
