@@ -106,6 +106,7 @@ import VenueSelector from "~/components/forms/VenueSelector.vue";
 import SeatsIoDrawer from "~/components/forms/SeatsIoDrawer.vue";
 import {SeatsioEventManager} from "@seatsio/seatsio-vue";
 import SeatsIoManager from "~/components/forms/SeatsIoManager.vue";
+import { ElLoading, ElNotification } from 'element-plus';
 
 export default {
   components: {SeatsioEventManager, SeatsIoDrawer, VenueSelector, Timeline, DatePicker,SeatsIoManager},

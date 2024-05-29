@@ -69,6 +69,7 @@ import OrderTable from "~/components/dashboard/orderTable.vue";
 import Timeline from "~/components/forms/Timeline.vue";
 import axios from "axios";
 import EventSelector from "~/components/forms/EventSelector.vue";
+import { ElLoading, ElNotification } from 'element-plus';
 
 export default {
   components: {
