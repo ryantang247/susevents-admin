@@ -6,11 +6,10 @@ test('test', async ({ page }) => {
   await page.locator('#input-0').fill('124');
   await page.locator('#input-2').click();
   await page.locator('#input-2').fill('124');
-  await page.locator('div').filter({ hasText: /^Sign in$/ }).click();
   await page.getByRole('button', { name: 'Sign in' }).click();
-  await page.getByRole('link', { name: 'Venues' }).click();
-  await page.getByRole('button').nth(2).click();
-  await page.getByLabel('Name').click();
-  await page.getByLabel('Name').fill('Swimming Pool 2');
-  await page.getByRole('button', { name: 'submit' }).click();
+  await page.getByRole('link', { name: 'Customer Services' }).click();
+  await page.locator('div:nth-child(4) > .ce-chat-card').click();
+  await page.getByPlaceholder('Write a message...').click();
+  await page.getByPlaceholder('Write a message...').fill('Hi, welcome to sus ticket web');
+  await page.getByRole('button', { name: 'caret-up' }).click();
 });
