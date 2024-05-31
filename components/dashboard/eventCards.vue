@@ -12,7 +12,7 @@
       <v-row>
         <v-col v-for="(event, index) in eventList" :key="index" cols="12" md="4">
           <v-hover v-slot="{ isHovering, props }">
-            <v-card v-bind="props" class="card-limit">
+            <v-card :id="'event'+index" v-bind="props" class="card-limit">
               <v-img :src="event.thumbnail" alt="Avatar">
                 <v-expand-transition>
                   <div
