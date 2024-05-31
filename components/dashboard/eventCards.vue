@@ -116,6 +116,11 @@ export default {
             })
             .then((response) => {
               console.log("Event deleted successfully ",response);
+              ElNotification.success({
+                title: 'Success',
+                message: `Sucess deleting event.`,
+                offset: 100,
+              });
               this.eventList = this.eventList.filter((venue) => venue.id !== item.id);
               // Refresh the venue list or update UI as needed
             }, )
