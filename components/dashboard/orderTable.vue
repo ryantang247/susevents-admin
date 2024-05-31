@@ -43,6 +43,7 @@
 
 <script>
 import axios from "axios";
+import { ElLoading, ElNotification } from 'element-plus';
 
 export default {
   name:'orderTable',
