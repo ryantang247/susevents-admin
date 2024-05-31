@@ -212,7 +212,7 @@ export default {
                   })
               ElNotification.success({
                 title: 'Success',
-                message: "Sucessfully created event!",
+                message: "Sucessfully created chart!",
                 offset: 100,
               }
               );
