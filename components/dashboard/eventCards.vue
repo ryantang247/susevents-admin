@@ -20,10 +20,10 @@
                       class="d-flex align-center justify-center transition-fast-in-fast-out"
                       style="height: 100%; background-color: rgba(0, 0, 0, 0.5);"
                   >
-                    <v-btn :id="index + '-edit'" @click="editItem(event)">
+                    <v-btn :id="'edit-'+index" @click="editItem(event)">
                       <v-icon>mdi-pencil</v-icon>
                     </v-btn>
-                    <v-btn :id="index + '-del'" @click="deleteItem(event)">
+                    <v-btn :id="'del'+ index" @click="deleteItem(event)">
                       <v-icon>mdi-delete</v-icon>
                     </v-btn>
                   </div>
