@@ -16,7 +16,7 @@
                   <v-icon>mdi-pencil</v-icon>
                 </v-btn>
 
-                <v-btn id="'delete"  @click="deleteItem(user)">
+                <v-btn id="delete"  @click="deleteItem(user)">
                   <v-icon>mdi-delete</v-icon>
                 </v-btn>
               </div>
