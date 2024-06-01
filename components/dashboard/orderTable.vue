@@ -55,6 +55,7 @@ export default {
       headers: [
         { title: 'Name', value: 'name' },
         { title: 'Date', value: 'date' },
+        {title: 'Event Name', value: 'title'},
         { title: 'Description', value: 'description' },
         { title: 'Amount', value: 'amount' },
         { title: 'Refund', value: 'refund' }
@@ -119,10 +120,15 @@ export default {
               const eventDate = this.changeDateFormat(item.createdAt)
 
               item.order.forEach((item)=>{
-                var name = "Deleted"
+                var name = "User Deleted"
 
                 if (item && item.user && item.user.sid) {
                   name = item.user.sid;
+                }
+
+                var eventName = "Event deleted"
+                if(item.event){
+                  eventName = item.event.title
                 }
 
                 const newData = {
@@ -130,6 +136,7 @@ export default {
                   date: eventDate,
                   id: item.id,
                   description: transactionType,
+                  title: eventName,
                   amount: item.price,
                   refund: transactionType === 'Purchase'
                 }
