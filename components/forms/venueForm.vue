@@ -60,11 +60,6 @@ export default {
   async mounted() {
     // If in edit mode and editUser is provided, autofill the form
     if (this.isEdit) {
-      const loading = ElLoading.service({
-        lock: true,
-        text: 'Loading...',
-        background: 'rgba(0, 0, 0, 0.7)',
-      });
       try{
 
       this.name = this.venueData.name || '';
