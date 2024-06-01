@@ -111,7 +111,7 @@ export default {
     deleteItem(item) {
         // Show confirmation dialog
       console.log(item)
-        if (confirm("Are you sure you want to delete this item?")) {
+        // if (confirm("Are you sure you want to delete this item?")) {
           // User confirmed, proceed with deletion
           axios
               .delete(`https://secourse2024-675d60a0d98b.herokuapp.com/api/deleteVenue/${item.id}`,{
@@ -137,7 +137,7 @@ export default {
                 });
               });
         }
-      },
+      // },
   },
 
   mounted(){
