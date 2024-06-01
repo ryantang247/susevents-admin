@@ -3,7 +3,7 @@
 <img src="assets/logo2.png" width=300 alt="logo"/>
   
 # SUSTech TICKET
-**CS304 Project for Software Engineering**
+# CS304 Project for Software Engineering
 </div>
 
 # Admin Documentation
