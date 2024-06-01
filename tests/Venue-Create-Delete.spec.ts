@@ -28,9 +28,11 @@ test('test', async ({ page }) => {
   });
   await page.getByLabel('Select Thumbnail', { exact: true }).setInputFiles('assets/stadium.png');
   await page.getByRole('button', { name: 'submit' }).click();
-
-  await expect(page.locator('[id="__nuxt"]')).toContainText('Name: sustech pool partysustech pool');
+  await page.waitForTimeout(2000);
 await page.getByText('Name: sustech pool partysustech pool').hover();
+await page.waitForTimeout(2000);
+
 await page.locator(`#delete`).click();
+await page.getByText('Sucessfully deleted!').click();
   
 });

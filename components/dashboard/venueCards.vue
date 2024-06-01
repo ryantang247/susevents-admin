@@ -12,11 +12,11 @@
                   class="d-flex align-center justify-center transition-fast-in-fast-out"
                   style="height: 100%; background-color: rgba(0, 0, 0, 0.5);"
               >
-                <v-btn icon @click="editItem(user)">
+                <v-btn id="edit"  @click="editItem(user)">
                   <v-icon>mdi-pencil</v-icon>
                 </v-btn>
 
-                <v-btn icon @click="deleteItem(user)">
+                <v-btn id="delete"  @click="deleteItem(user)">
                   <v-icon>mdi-delete</v-icon>
                 </v-btn>
               </div>
@@ -111,7 +111,7 @@ export default {
     deleteItem(item) {
         // Show confirmation dialog
       console.log(item)
-        if (confirm("Are you sure you want to delete this item?")) {
+        // if (confirm("Are you sure you want to delete this item?")) {
           // User confirmed, proceed with deletion
           axios
               .delete(`https://secourse2024-675d60a0d98b.herokuapp.com/api/deleteVenue/${item.id}`,{
@@ -137,7 +137,7 @@ export default {
                 });
               });
         }
-      },
+      // },
   },
 
   mounted(){

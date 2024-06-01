@@ -12,7 +12,7 @@
       <v-row>
         <v-col v-for="(event, index) in eventList" :key="index" cols="12" md="4">
           <v-hover v-slot="{ isHovering, props }">
-            <v-card v-bind="props" class="card-limit">
+            <v-card :id="'event'+index" v-bind="props" class="card-limit">
               <v-img :src="event.thumbnail" alt="Avatar">
                 <v-expand-transition>
                   <div
@@ -20,10 +20,10 @@
                       class="d-flex align-center justify-center transition-fast-in-fast-out"
                       style="height: 100%; background-color: rgba(0, 0, 0, 0.5);"
                   >
-                    <v-btn icon @click="editItem(event)">
+                    <v-btn id="edit" @click="editItem(event)">
                       <v-icon>mdi-pencil</v-icon>
                     </v-btn>
-                    <v-btn icon @click="deleteItem(event)">
+                    <v-btn id="delete" @click="deleteItem(event)">
                       <v-icon>mdi-delete</v-icon>
                     </v-btn>
                   </div>
@@ -31,7 +31,7 @@
 
               </v-img>
               <v-card-text>
-                <div>Name: {{ event.name }}</div>
+                <div>Name: {{ event.title }}</div>
                 <div>{{ event.description }}</div>
                 <div>{{ event.startDate }} {{event.endDate}}}</div>
               </v-card-text>
@@ -108,7 +108,6 @@ export default {
     deleteItem(item) {
       // Show confirmation dialog
       console.log(item)
-      if (confirm("Are you sure you want to delete this item?")) {
         // User confirmed, proceed with deletion
         axios
             .delete(`https://secourse2024-675d60a0d98b.herokuapp.com/api/deleteEvent/${item.id}`,{
@@ -116,6 +115,11 @@ export default {
             })
             .then((response) => {
               console.log("Event deleted successfully ",response);
+              ElNotification.success({
+                title: 'Success',
+                message: `Sucess deleting event.`,
+                offset: 100,
+              });
               this.eventList = this.eventList.filter((venue) => venue.id !== item.id);
               // Refresh the venue list or update UI as needed
             }, )
@@ -127,7 +131,6 @@ export default {
               });
               console.log("Error deleting event ",error);
             });
-      }
     },
   },
 

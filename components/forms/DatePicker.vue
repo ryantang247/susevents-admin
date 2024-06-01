@@ -7,12 +7,24 @@
 
   ></v-text-field>
   <v-dialog v-model="dateMenuStart" width="auto " content-class="my-custom-dialog">
-    <v-date-picker
+    <v-card>
+      <v-date-picker
 
-        v-model="dateValue"
-        @update:modelValue="$emit('value-emit', dateValue)"
-        range
-    ></v-date-picker>
+          v-model="dateValue"
+          @update:modelValue="$emit('value-emit', dateValue)"
+          range
+      ></v-date-picker>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+
+        <v-btn
+            text="Close"
+            variant="plain"
+            @click="dateMenuStart = false"
+        ></v-btn>
+      </v-card-actions>
+    </v-card>
+
   </v-dialog>
   </div>
 </template>
