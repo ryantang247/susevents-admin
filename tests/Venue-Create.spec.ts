@@ -4,9 +4,9 @@ test('test', async ({ page }) => {
   test.setTimeout(60000);
   await page.goto('https://susevents-admin.vercel.app/');
   await page.locator('#input-0').click();
-  await page.locator('#input-0').fill('124');
+  await page.locator('#input-0').fill('12111428');
   await page.locator('#input-2').click();
-  await page.locator('#input-2').fill('124');
+  await page.locator('#input-2').fill('12111428');
   await page.getByRole('button', { name: 'Sign in' }).click();
   await page.getByRole('link', { name: 'Venues' }).click();
   await page.getByRole('link', { name: 'Add Venue' }).click();
@@ -26,7 +26,11 @@ test('test', async ({ page }) => {
       y: 179
     }
   });
-  await page.getByLabel('Select Thumbnail', { exact: true }).click();
-  await page.getByLabel('Select Thumbnail', { exact: true }).setInputFiles('\\susevents-admin\\assets\\stadium.png');
+  await page.getByLabel('Select Thumbnail', { exact: true }).setInputFiles('assets/stadium.png');
   await page.getByRole('button', { name: 'submit' }).click();
+
+  await expect(page.locator('[id="__nuxt"]')).toContainText('Name: sustech pool partysustech pool');
+await page.getByText('Name: sustech pool partysustech pool').hover();
+await page.locator(`#delete`).click();
+  
 });
