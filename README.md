@@ -13,34 +13,34 @@ Welcome to SUSTech Ticket admin page. This guide will help you to understand how
 - Go to the [login page](https://susevents-admin.vercel.app).
 - Login with your admin account  SID and Password
 ### 2. Users
-- Go to the [login page](https://susevents-admin.vercel.app/user).
+- Go to the [users](https://susevents-admin.vercel.app/user).
 - click New User icon to create a new user, it will take you to create user form and you just need to fill out the user information, finally click submit.
 - click edit icon to update the informations of the a user, after making any changes click submit.
 - click delete icon to delete any user needed to be deleted.
 - change Item per page when you want to display more or less users lists.
 ### 3. Venues
-- Go to the [login page](https://susevents-admin.vercel.app/venue).
+- Go to the [venues](https://susevents-admin.vercel.app/venue).
 - it can display all venues that you have created
 - click Add Venue icon to create a new venue, it will take you to create venue form. After filling out all information click submit.
 - click edit icon to update information of the venue.
 - click on delete to delete any venue
 ### 4. Events
-- Go to the [login page](https://susevents-admin.vercel.app/events).
+- Go to the [events](https://susevents-admin.vercel.app/events).
 - it can display all events that you have created
 - click Add Event con to create a new event, it will take you to create event form. After filling out all information click submit.
 - click edit icon to update information of the event.
 - click on delete to delete any event
 ### 5. Notifications
-- Go to the [login page](https://susevents-admin.vercel.app/notification).
+- Go to the [notifications](https://susevents-admin.vercel.app/notification).
 - Fill out the Notifition title
 - Fill out descrition of notifition
 - select what type of users you want to notify
 - click submit to send nofitication
 ### 6. Customer Service
-- Go to the [login page](https://susevents-admin.vercel.app/customers).
+- Go to the [customer service](https://susevents-admin.vercel.app/customers).
 - click on any user to the message and reply to that message
 ### 7. Transaction History
-- Go to the [login page](https://susevents-admin.vercel.app/transaction).
+- Go to the [Transaction History](https://susevents-admin.vercel.app/transaction).
 - it displays all payments histories and their status
 - click on Refund button to make refund to the clients
 - change Item per page when you want to display more or less history lists.
@@ -51,7 +51,7 @@ Welcome to SUSTech Ticket admin page. This guide will help you to understand how
   ```
 2. **Install Dependencies**
    
- Make sure to install the dependencies:
+ **Make sure to install the dependencies:**
 
   ```bash
   # npm
@@ -66,13 +66,13 @@ Welcome to SUSTech Ticket admin page. This guide will help you to understand how
   # bun
   bun install
   ```
-  - Install and Use react-chat-engine-pretty
+  **Install and Use react-chat-engine-pretty**
   ```bash
    npm install react-chat-engine react-chat-engine-pretty axios
   ```
 3. **Run Development Server**
    
-   Start the development server on `http://localhost:3000`:
+  Start the development server on `http://localhost:3000`:
 
   ```bash
   # npm
@@ -88,7 +88,8 @@ Welcome to SUSTech Ticket admin page. This guide will help you to understand how
   bun run dev
   ```
 4. **Production**
-   Build the application for production:
+   
+   **Build the application for production:**
 
   ```bash
   # npm
@@ -104,7 +105,7 @@ Welcome to SUSTech Ticket admin page. This guide will help you to understand how
   bun run build
   ```
 
-  Locally preview production build:
+ **Locally preview production build:**
 
   ```bash
   # npm
