@@ -26,11 +26,11 @@ Welcome to SUSTech Ticket admin page. This guide will help you to understand how
 
 ## Developer Guide
 1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/yourusername/susevent-admin.git
-   ```
+  ```bash
+  git clone https://github.com/yourusername/susevent-admin.git
+  ```
 2. **Install Dependencies**
-   Make sure to install the dependencies:
+Make sure to install the dependencies:
 
   ```bash
   # npm
@@ -45,7 +45,7 @@ Welcome to SUSTech Ticket admin page. This guide will help you to understand how
   # bun
   bun install
   ```
-### Install and Use react-chat-engine-pretty
+  **Install and Use react-chat-engine-pretty**
   ```bash
    npm install react-chat-engine react-chat-engine-pretty axios
   ```
