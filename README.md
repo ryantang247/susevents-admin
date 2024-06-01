@@ -12,6 +12,7 @@ Welcome to SUSTech Ticket admin page. This guide will help you to understand how
 ### login for admin
 1. Go to the [login page](https://susevents-admin.vercel.app).
 2. Login with your admin account  SID and Password
+   
 ### Users
 
 ### Venues
@@ -100,3 +101,5 @@ Make sure to install the dependencies:
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
    
 ## API Documentation
+## FYI
+you encounter problems to run the program or discover some bugs.
