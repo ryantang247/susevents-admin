@@ -13,28 +13,34 @@ Welcome to SUSTech Ticket admin page. This guide will help you to understand how
 - Go to the [login page](https://susevents-admin.vercel.app).
 - Login with your admin account  SID and Password
 ### 2. Users
+- Go to the [login page](https://susevents-admin.vercel.app/user).
 - click New User icon to create a new user, it will take you to create user form and you just need to fill out the user information, finally click submit.
 - click edit icon to update the informations of the a user, after making any changes click submit.
 - click delete icon to delete any user needed to be deleted.
 - change Item per page when you want to display more or less users lists.
 ### 3. Venues
+- Go to the [login page](https://susevents-admin.vercel.app/venue).
 - it can display all venues that you have created
 - click Add Venue icon to create a new venue, it will take you to create venue form. After filling out all information click submit.
 - click edit icon to update information of the venue.
 - click on delete to delete any venue
 ### 4. Events
+- Go to the [login page](https://susevents-admin.vercel.app/events).
 - it can display all events that you have created
 - click Add Event con to create a new event, it will take you to create event form. After filling out all information click submit.
 - click edit icon to update information of the event.
 - click on delete to delete any event
 ### 5. Notifications
+- Go to the [login page](https://susevents-admin.vercel.app/notification).
 - Fill out the Notifition title
 - Fill out descrition of notifition
 - select what type of users you want to notify
 - click submit to send nofitication
 ### 6. Customer Service
+- Go to the [login page](https://susevents-admin.vercel.app/customers).
 - click on any user to the message and reply to that message
 ### 7. Transaction History
+- Go to the [login page](https://susevents-admin.vercel.app/transaction).
 - it displays all payments histories and their status
 - click on Refund button to make refund to the clients
 - change Item per page when you want to display more or less history lists.
@@ -44,7 +50,8 @@ Welcome to SUSTech Ticket admin page. This guide will help you to understand how
   git clone https://github.com/yourusername/susevent-admin.git
   ```
 2. **Install Dependencies**
-Make sure to install the dependencies:
+   
+ Make sure to install the dependencies:
 
   ```bash
   # npm
@@ -59,7 +66,7 @@ Make sure to install the dependencies:
   # bun
   bun install
   ```
-  **Install and Use react-chat-engine-pretty**
+  - Install and Use react-chat-engine-pretty
   ```bash
    npm install react-chat-engine react-chat-engine-pretty axios
   ```
@@ -114,6 +121,5 @@ Make sure to install the dependencies:
   ```
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
    
-## API Documentation
 ## FYI
 let us know if you encounter problems to run the program or discover some bugs.
