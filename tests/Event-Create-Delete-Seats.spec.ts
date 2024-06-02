@@ -7,6 +7,7 @@ test('test', async ({ page }) => {
   await page.locator('#input-2').click();
   await page.locator('#input-2').fill('12111428');
   await page.getByRole('button', { name: 'Sign in' }).click();
+  
   await page.getByRole('link', { name: 'Events' }).click();
   await page.getByRole('link', { name: 'Avatar Add Event' }).click();
   await page.goto('https://susevents-admin.vercel.app/events/addevent');await page.getByLabel('Event Name').click();

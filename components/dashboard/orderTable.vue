@@ -84,6 +84,12 @@ export default {
         withCredentials:true
       })
           .then((response) => {
+
+            ElNotification.success({
+              title: 'Success',
+              message: `Refund success!`,
+              offset: 100,
+            });
             console.log(response);
           })
           .catch((error) => {
