@@ -12,6 +12,30 @@ description: An example for the new @nuxt/content and @nuxt/components modules
 
 ---
 
+TABLE OF CONTENT
+1. [Date Picker Component](#date-picker-component)
+2. [Event Cards Component](#eventcards-component)
+3. [Event Form Component](#event-form-component)
+4. [Event Selector Component](#event-selector-component)
+5. [Header Component](#header-component)
+6. [Location Geter Component](#lcoation-getter-component)
+7. [Login Form Component](#login-form-component)
+8. [Menu List Component](#menu-list-component)
+9. [Order Table Component](#ordertable-component)
+10. [`RegisterForm` Component](#registerform-component)
+11. [`SeatsIoDrawer` Component](#seatsiodrawer-component)
+12. [`SeatsIoManager` Component](#seatsiomanager-component)
+13. [`Timeline` Component](#timeline-component)
+14. [`UserForm` Component](#userform-component)
+15. [`users` Component](#users-component)
+15. [`VenueCard` Component](#venue-cards-component)
+16. [`VenueForm` Component](#venueform-component)
+17. [`VenueSelector` Component](#venueselector-component)
+
+
+---
+
+<!-- DatePicker.vue -->
 # `Date Picker` Component
 
 ::DatePicker
@@ -34,9 +58,11 @@ receivedDate: 2024-6-2
 - `Behavior`: If the `newVal` is different from the `oldVal`, it updates the `dateValue` in the component.
 
 ---
-# `Venue Cards` Component
 
-::venueCards
+<!-- eventCards.vue -->
+# `eventCards` Component
+
+::eventCards
 ---
 eventList: []
 selectedEvent: null
@@ -52,23 +78,51 @@ isDelete: false
 ## Methods
 
 ### `getItems`
-- `description`: Fetches all events from the API and populates `eventList`.
-- `Behavior`: Sends a GET request to the API endpoint to retrieve event data. Updates the `eventList` with the fetched data. Displays notifications for success or error.
+- **Description**: Fetches all events from the API and populates `eventList`.
+- **Parameters**: `None`
+- **Behavior**: 
+  - Sends a GET request to the API endpoint to retrieve event data.
+  - Updates the `eventList` with the fetched data.
+  - Displays notifications for success or error.
 
 ### `editItem`
-
-- `Description`: Sets the component to edit mode with the selected event.
-- `Parameters`:`item`: The event item to be edited.
-- `Behavior`: Sets `isEdit` to true and updates `selectedEvent` with the event data.
+- **Description**: Sets the component to edit mode with the selected event.
+- **Parameters**:
+  - `item` (`Object`): The event item to be edited.
+- **Behavior**: 
+  - Sets `isEdit` to `true`.
+  - Updates `selectedEvent` with the event data.
 
 ### `deleteItem`
+- **Description**: Deletes the selected event after user confirmation.
+- **Parameters**:
+  - `item` (`Object`): The event item to be deleted.
+- **Behavior**:
+  - Sends a DELETE request to the API endpoint to delete the event.
+  - Updates `eventList` to remove the deleted event.
+  - Displays notifications for success or error.
 
-- `Description`: Deletes the selected event after user confirmation.
-- `Parameters`: `item`: The event item to be deleted.
-- `Behavior`: Sends a DELETE request to the API endpoint to delete the event. Updates `eventList` to remove the deleted event. Displays notifications for success or error.
+## Data Properties
+
+### `eventList`
+- **Type**: `Array`
+- **Description**: Contains the list of events fetched from the API.
+
+### `selectedEvent`
+- **Type**: `Object` or `null`
+- **Description**: Stores the event item that is currently selected for editing.
+
+### `isEdit`
+- **Type**: `Boolean`
+- **Description**: Indicates whether the component is in edit mode.
+
+### `isDelete`
+- **Type**: `Boolean`
+- **Description**: Indicates whether the component is in delete mode.
 
 ---
-
+<!-- 
+eventForm.vue -->
 # `Event Form` Component
 
 ::eventForm
@@ -151,7 +205,8 @@ eventData: {}
 
 ---
 
-# `Event Form` Component
+<!-- EventSelector.vue -->
+# `Event Selector` Component
 
 ## `Props`
 
@@ -173,6 +228,8 @@ eventData: {}
 - `Behavior`: Closes the venue selection dialog, resets `eventList`, updates `eventName` with the selected event's title, and emits the `event-emit` event with the selected event's ID.
 
 ---
+
+<!-- Header.vue -->
 
 # `Header` Component
 
@@ -212,9 +269,10 @@ color: 'white'
 
 None
 
----
+<!-- 
+LoginForm.vue -->
 
-# `Login Page` Component
+# `Login Form` Component
 
 ::loginForm
 ---
@@ -235,8 +293,10 @@ color: 'primary'
 - `Description`: Performs the login operation with the provided student ID and password.
 - `Behavior`: Sends a POST request to the server with the student ID and password. If successful, sets cookies and redirects to the user page. Displays error notification on failure.
 
+
 ---
 
+<!-- MenuList.vue -->
 # `Menu List` Component
 
 ::MenuList
@@ -286,6 +346,7 @@ color: 'primary'
 
 ---
 
+<!-- orderTable.vue -->
 # `OrderTable` Component
 
 ::orderTable
@@ -483,6 +544,68 @@ Saves the seating mechanism and handles API interactions with Seats.io.
 
 ---
 
+<!-- SeatsIoManager.vue -->
+
+# `SeatsIoManager` Component
+
+The `SeatsIoManager` component is designed to manage seating events using Seats.io. It integrates with `axios` for HTTP requests and `SeatsioEventManager` for managing seating chart events.
+
+## Component Usage
+
+::seatsIoManager
+---
+eventKey: ""
+---
+::
+
+## Description
+
+### Name
+
+`SeatsIoManager`
+
+### Components
+
+- **`SeatsioEventManager`**: Component for managing seating events from Seats.io.
+
+### Props
+
+- **`eventKey`**: `String` - The key of the event to be managed.
+
+## Data Properties
+
+| Property | Type     | Description                             |
+|----------|----------|-----------------------------------------|
+| `key`    | `string` | Username from `userconfig`.             |
+| `region` | `string` | Region for the Seats.io integration.    |
+
+## Methods
+
+### `bookEvent(e)`
+
+Books the event using the provided event data.
+
+#### Parameters
+
+- **`e`**: `object` - Event data.
+
+## Template Structure
+
+### Main Template
+
+- **Event Manager**: Uses `SeatsioEventManager` to manage the seating event if `eventKey` is provided.
+
+### Template Elements
+
+- **SeatsioEventManager**:
+  - **Props**:
+    - `:secretKey`: Binds to `key`.
+    - `:event`: Binds to `eventKey`.
+    - `region`: Set to `"oc"`.
+    - `mode`: Set to `"manageObjectStatuses"`.
+
+---
+
 <!-- Timeline.vue -->
 
 # `Timeline` Component
@@ -644,16 +767,15 @@ editUser: {}
   - `oldVal`: The old value of the `isEdit` prop.
 
 ---
+<!-- users.vue -->
 
-<!-- UserTableComponent.vue -->
+# `Users` Component
 
-# `UserTableComponent` Component
-
-The `UserTableComponent` is designed to display a table of users with options to edit and delete each user. It integrates with Vuetify for UI elements and Axios for HTTP requests.
+The `Users` component is designed to display a table of users with options to edit and delete each user. It integrates with Vuetify for UI elements and Axios for HTTP requests.
 
 ## Component Usage
 
-::userTableComponent
+::users
 ---
 ---
 ::
@@ -662,7 +784,7 @@ The `UserTableComponent` is designed to display a table of users with options to
 
 ### Name
 
-`UserTableComponent`
+`Users`
 
 ### Components
 
@@ -749,8 +871,50 @@ Fetches the list of users when the component is mounted.
   - **Props**:
     - `:src`: Binds to `item.avatar`.
 
+- **New User Button**:
+  - **Props**:
+    - `href`: Set to `"/user/newuser"`.
+    - `variant`: Set to `"text"`.
+    - `icon`: Set to `"mdi-account-plus"`.
+
 ---
 
+<!-- VenueCards.vue -->
+
+# `Venue Cards` Component
+
+::venueCards
+---
+eventList: []
+selectedEvent: null
+isEdit: false
+isDelete: false
+---
+::
+
+## Props
+
+`None`
+
+## Methods
+
+### `getItems`
+- `description`: Fetches all events from the API and populates `eventList`.
+- `Behavior`: Sends a GET request to the API endpoint to retrieve event data. Updates the `eventList` with the fetched data. Displays notifications for success or error.
+
+### `editItem`
+
+- `Description`: Sets the component to edit mode with the selected event.
+- `Parameters`:`item`: The event item to be edited.
+- `Behavior`: Sets `isEdit` to true and updates `selectedEvent` with the event data.
+
+### `deleteItem`
+
+- `Description`: Deletes the selected event after user confirmation.
+- `Parameters`: `item`: The event item to be deleted.
+- `Behavior`: Sends a DELETE request to the API endpoint to delete the event. Updates `eventList` to remove the deleted event. Displays notifications for success or error.
+
+---
 <!-- VenueForm.vue -->
 
 # `VenueForm` Component
