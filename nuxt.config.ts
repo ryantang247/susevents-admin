@@ -11,12 +11,12 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify','veaury'],
   },
-  alias: {
-    'veaury': 'veaury/dist/veaury.esm.js'
-  },
+  // alias: {
+  //   'veaury': 'veaury/dist/veaury.esm.js'
+  // },
 
   modules: [
-    '@element-plus/nuxt',
+    '@nuxt/content','@element-plus/nuxt',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
         // @ts-expect-error
