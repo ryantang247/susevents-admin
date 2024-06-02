@@ -5,12 +5,317 @@ description: An example for the new @nuxt/content and @nuxt/components modules
 
 <div align="center">
 <h1>Admin Page Documentation</h1>
-    <img src="/asssets/logo2.png" width=300 alt="logo"/>
+<!-- <img src="../assets/logo2.png" width="300" alt="logo"/> -->
 <!-- <h3>Welcome to Admin Page Documentation!</h3> -->
 <h6>Following documentation will guide you to understand Admin Page code structure and component.</h6>
 </div>
 
 ---
+
+# `Date Picker` Component
+
+::DatePicker
+---
+receivedDate: 2024-6-2
+---
+::
+## props
+
+### `receivedDate`:
+- `Type`: Date
+- `Description`: This prop receives a date value from the parent component. When a new value is received, it updates the `dateValue` in the component.
+
+
+## Methods
+
+### `watch`: 
+- `Description`: This method watches for changes in the `receivedDate` prop. When a new value is received, it updates the `dateValue` in the component.
+- `Parameters`: `newVal`: The new value of the `receivedDate` prop. `oldVal`: The old value of the `receivedDate` prop.
+- `Behavior`: If the `newVal` is different from the `oldVal`, it updates the `dateValue` in the component.
+
+---
+# `Venue Cards` Component
+
+::venueCards
+---
+eventList: []
+selectedEvent: null
+isEdit: false
+isDelete: false
+---
+::
+
+## Props
+
+`None`
+
+## Methods
+
+### `getItems`
+- `description`: Fetches all events from the API and populates `eventList`.
+- `Behavior`: Sends a GET request to the API endpoint to retrieve event data. Updates the `eventList` with the fetched data. Displays notifications for success or error.
+
+### `editItem`
+
+- `Description`: Sets the component to edit mode with the selected event.
+- `Parameters`:`item`: The event item to be edited.
+- `Behavior`: Sets `isEdit` to true and updates `selectedEvent` with the event data.
+
+### `deleteItem`
+
+- `Description`: Deletes the selected event after user confirmation.
+- `Parameters`: `item`: The event item to be deleted.
+- `Behavior`: Sends a DELETE request to the API endpoint to delete the event. Updates `eventList` to remove the deleted event. Displays notifications for success or error.
+
+---
+
+# `Event Form` Component
+
+::eventForm
+---
+isEdit: false
+eventData: {}
+---
+::
+
+## `Props`
+
+### `isEdit`:
+- `Type`: Boolean
+- `Description`: This prop indicates if the form is in edit mode. It determines if existing event data should be loaded and edited.
+
+### `eventData`:
+- `Type`: Object
+- `Description`: This prop contains the data of the event to be edited. It is used to pre-fill the form fields when the component is in edit mode.
+
+## `Methods`
+
+### `handleSelectedIndex`
+
+- `Description`: Updates the form's status based on the selected index.
+- `Parameters`:
+  - `value`: The selected index value.
+
+### `handleDate1`
+
+- `Description`: Updates the form's start date.
+- `Parameters`:
+  - `value`: The selected start date.
+
+### `handleDate2`
+
+- `Description`: Updates the form's end date.
+- `Parameters`:
+  - `value`: The selected end date.
+
+### `handleCanSubmit`
+
+- `Description`: Updates the canSubmit property based on the provided value.
+- `Parameters`:
+  - `canSubmit`: A boolean indicating if the form can be submitted.
+
+### `handlePricing`
+
+- `Description`: Updates the form's pricing information.
+- `Parameters`: `pricing`: The pricing data.
+
+### `handleVenue`
+
+- `Description`: Updates the form's venue ID.
+- `Parameters`: `venueID`: The selected venue ID.
+
+### `handleEventKey`
+
+- `Description`: Updates the form's seatsio event key.
+- `Parameters`: `eventKey`: The event key from seats.io.
+
+### `handleChartKey`
+
+- `Description`: Updates the form's seatsio chart key.
+- `Parameters`: `chartKey`: The chart key from seats.io.
+
+### `handleCapacity`
+
+- `Description`: Updates the form's capacity.
+- `Parameters`: `capacity`: The capacity value.
+
+### `onFileChanged`
+
+- `Description`: Handles the change event for the file input and updates the form's thumbnail.
+- `Parameters`: `event`: The file change event.
+
+### `submitEvent`
+
+- `Description`: Submits the event form data to the server. If in edit mode, it updates the existing event; otherwise, it creates a new event.
+- `Behavior`: Sends a POST or PATCH request to the server with the form data. Displays notifications for success or error.
+
+---
+
+# `Event Form` Component
+
+## `Props`
+
+### `receivedVenueId`:
+- `Type`: String
+- `Description`: This prop receives the ID of the venue from the parent component. It is used to pre-select and display the venue name in the text field.
+
+## `Methods`
+
+### `insertVenue`: 
+
+- `Description`: Fetches the list of all events from the server and updates the `eventList` data property. It also pre-fills the event name if `receivedVenueId` matches an event ID.
+- `Behavior`: Sends a GET request to the API to fetch events. If successful, updates `eventList` and sets `eventName` if a matching event is found. Displays success or error notifications based on the result.
+
+### `selectVenue`: 
+
+- `Description`: Selects a venue from the list, closes the dialog, clears the `eventList`, updates `eventName`, and emits the selected event's ID to the parent component.
+- `Parameters`:event`: The selected event object.
+- `Behavior`: Closes the venue selection dialog, resets `eventList`, updates `eventName` with the selected event's title, and emits the `event-emit` event with the selected event's ID.
+
+---
+
+# `Header` Component
+
+::Header
+---
+color: 'deep-purple accent-4'
+---
+::
+
+### Props
+
+### `color`:
+- `Type`: String
+- `Description`: The color of the toolbar.
+
+### `Methods`
+
+None
+
+---
+
+# `Lcoation Getter` Component
+
+::LcoationGetter
+---
+color: 'white'
+---
+::
+
+### `Props`
+
+### `color`:
+- `Type`: String
+- `Description`: The background color of the map container.
+
+### `Methods`
+
+None
+
+---
+
+# `Login Page` Component
+
+::loginForm
+---
+color: 'primary'
+---
+::
+
+### Props
+
+### `color` :
+- `Type`: String
+- `Description`: The color of the text fields.
+
+### Methods
+
+### `login`
+
+- `Description`: Performs the login operation with the provided student ID and password.
+- `Behavior`: Sends a POST request to the server with the student ID and password. If successful, sets cookies and redirects to the user page. Displays error notification on failure.
+
+---
+
+# `Menu List` Component
+
+::MenuList
+---
+color: 'primary'
+---
+::
+
+### props
+
+### `drawer`:
+- `Type`: Boolean
+- `Description`: Controls the visibility of the navigation drawer.
+
+### `username`:
+- `Type`: String
+- `Description`: The username retrieved from local storage.
+
+### `sid`:
+- `Type`: String
+- `Description`: The student ID retrieved from local storage.
+
+### `avatar`:
+- `Type`: String
+- `Description`: The avatar retrieved from local storage.
+
+### `items`:
+- `Type`: Array
+- `Description`: An array of objects representing menu items. Each object contains text, icon, and link properties.
+
+### Methods
+
+### `mounted`
+
+- `Description`: Lifecycle hook that runs when the component is mounted. Retrieves user information from local storage.
+
+### Computed Properties
+
+### `group`:
+- `Type`: Boolean
+- `Description`: 
+
+### Watchers
+
+### `group`
+- `Description`: Watches for changes in the group property and closes the drawer when it changes.
+
+---
+
+# `OrderTable` Component
+
+::orderTable
+---
+color: 'primary'
+---
+::
+
+### Props
+
+None
+
+### Methods
+
+### `changeDateFormat(isoDateString)`
+- `Description`: Formats the given ISO date string into a dd/mm/yy format.
+- `Parameters`: `isoDateString`: String - The ISO date string to be formatted.
+
+### `refundItem(item)`
+- `Description`: Sends a refund request for the specified item.
+- `Parameters`: `item`: Object - The transaction item to be refunded.
+
+### `mounted()`
+- `Description`: Lifecycle hook that runs when the component is mounted. Retrieves transaction data from an API endpoint and formats it for display.
+
+### Computed Properties
+
+### `filteredTransactions()`
+- `Description`: Filters the transaction data based on the search term entered by the user.
+
 
 <!-- RegisterForm.vue -->
 
