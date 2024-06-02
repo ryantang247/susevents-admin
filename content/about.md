@@ -5,10 +5,12 @@ description: An example for the new @nuxt/content and @nuxt/components modules
 
 <div align="center">
 <h1>Admin Page Documentation</h1>
-    <!-- <img src="logo.png" width=300 alt="logo"/> -->
+    <img src="/asssets/logo2.png" width=300 alt="logo"/>
 <!-- <h3>Welcome to Admin Page Documentation!</h3> -->
 <h6>Following documentation will guide you to understand Admin Page code structure and component.</h6>
 </div>
+
+---
 
 <!-- RegisterForm.vue -->
 
